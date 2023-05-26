@@ -1,0 +1,4 @@
+<template>
+    <GameDrawer />
+    <LoginAlert />
+</template>

@@ -16,7 +16,12 @@
     const games = toRaw(response.value.data)
 </script>
 
-<style scoped>
+<style scoped>    
     .game-drawer-con{background: #00000061;text-align: center;padding: 40px 25px;}
      .game-drawer-box{display: flex;justify-content: flex-start;column-gap: 17px;flex-wrap: wrap;}
+
+     
+     @media only screen and (max-width: 1000px) {
+        .game-drawer { border-bottom: 1px solid #ffffff1a; padding-bottom: 40px; } 
+    }
 </style>

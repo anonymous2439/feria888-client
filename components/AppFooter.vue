@@ -30,24 +30,31 @@
                 </div>
                 <div class="app-footer-col">
                     <a href="/">
-                        <figure><img src="" alt="feria888 logo"></figure>
+                        <figure class="footer-logo"><img src="~/assets/images/main_logo.jpg" alt="feria888 logo"></figure>
                     </a>
-                </div>
+                </div>                
             </div>
+        </div>
+        <div class="copyright">
+            © Copyright 2023 • Feria 888
         </div>
     </div>
 </template>
 
 <style scoped>
-    .app-footer-con { display: flex; justify-content: space-between; column-gap: 15px; } 
+    .app-footer-con { display: flex; justify-content: space-between; column-gap: 15px; padding:40px 0;} 
     .app-footer-col ul li a { color: #fff; text-decoration: none; line-height: 100%; } 
     .app-footer-col ul li { margin-top: 12px; } 
     .app-footer-col ul li a:hover { text-decoration: underline; } 
+    .footer-logo {max-width: 210px;}
+    .copyright{text-align: center; background-color: var(--primary-color);padding:15px 10px;}
     
     @media only screen and (max-width: 1000px) {
-        .app-footer-con{background-color: var(--red);}
+        .app-footer-col { width: 48%; text-align: center; margin-bottom: 40px; } 
+        .app-footer-con{background-color: var(--red);flex-wrap: wrap;}
+        .footer-logo { margin: 0 auto; } 
     }
     @media only screen and (max-width: 800px) {
-        .app-footer-con{background-color: var(--red);}
+        .app-footer-con{background-color: var(--red); }
     }
 </style>

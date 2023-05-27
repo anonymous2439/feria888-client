@@ -18,5 +18,5 @@
 
 <style scoped>
     .game-drawer-con{background: #00000061;text-align: center;padding: 40px 25px;}
-     .game-drawer-box{display: flex;justify-content: start;column-gap: 17px;flex-wrap: wrap;}
+     .game-drawer-box{display: flex;justify-content: flex-start;column-gap: 17px;flex-wrap: wrap;}
 </style>

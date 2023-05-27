@@ -15,6 +15,11 @@
     </div>
 </template>
 
+<script setup>
+
+</script>
+
+
 <style scoped>
 #banner{margin: 40px 0;}
 .bnr-con{position: relative;}
@@ -23,4 +28,14 @@
 .bnr-info{position: absolute;top: 50%;left: 50px;}
  .bnr-info h2{font-size: 80px;}
  .bnr-info h2 span{font-family: 'open sans';font-size: 20px;display: block;}
+
+ @media only screen and (max-width: 1000px) {
+    #banner { border-bottom: 1px solid #ffffff1a; padding: 40px 0; } 
+    .bnr-info { margin-top: 25px; text-align: center; position: static;} 
+    .bnr-info h2 { font-size: 40px; } 
+    .bnr-info h2 span { font-size: 18px; } 
+}
+@media only screen and (max-width: 800px) {
+
+}
 </style>

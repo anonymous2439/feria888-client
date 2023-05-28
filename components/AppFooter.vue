@@ -43,7 +43,7 @@
 </template>
 
 <style scoped>
-    #app-footer {margin-bottom: 77px;}
+    
     .app-footer-con { display: flex; justify-content: space-between; padding:40px 0;} 
     .app-footer-col ul li a { color: #fff; text-decoration: none; line-height: 100%; } 
     .app-footer-col ul li { margin-top: 12px; } 
@@ -61,6 +61,7 @@
     }
     @media only screen and (max-width: 800px) {
         .app-footer-con{background-color: var(--red); }
+        #app-footer {margin-bottom: 77px;}
     }
     @media only screen and (max-width: 600px) {
         .app-footer-col { width: 100%; } 

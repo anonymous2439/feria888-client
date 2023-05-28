@@ -5,7 +5,7 @@
 </template>
 
 <style>
-    .app-categories{background-color: var(--primary-color);padding: 10px 10px;border-top: 5px solid var(--secondary-color);border-bottom: 5px solid var(--secondary-color);}
+    .app-categories{background-color: var(--primary-color);padding: 10px 10px;background: rgb(228,181,54);background: linear-gradient(90deg, rgba(228,181,54,1) 23%, rgba(212,49,23,1) 100%);}
     .app-categories ul{display: flex; column-gap: 20px;flex-wrap: wrap;row-gap: 15px;}
     .app-categories ul li a{cursor: pointer;transition: .6s;font-weight: 600;font-size: 20px;display: block;color: #fff;text-decoration: none;padding: 15px;}
     .app-categories ul li a:hover, .app-categories ul li a.active{background: var(--secondary-color);}

@@ -38,7 +38,7 @@
     {
         "title" :   "Pinnacle",
         "link"  :   "https://www.pinnacle.com/en",
-        "icon"  :   "https://www.feria888.com/images/soccer.png",
+        "icon"  :   "/images/soccer.png",
         "tags"  :   ["sports"]
     },
     {

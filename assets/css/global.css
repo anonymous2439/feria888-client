@@ -15,4 +15,4 @@ p { margin: 0; }
  .clearfix { clear: both; overflow: hidden; } 
 
 
- 
+ .swiper-slide figure{display: contents;}

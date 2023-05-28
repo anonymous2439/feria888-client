@@ -52,7 +52,7 @@
 
 
 <style scoped>
-#banner{margin: 40px 0;}
+#banner{margin-bottom: 40px;}
 .bnr-con{position: relative;}
 .bnr-bg { position: relative; box-sizing: border-box;overflow: hidden;background: #00000061;} 
  .bnr-bg figure img{filter: brightness(.9);width: 1920px;position: relative;left: 50%;transform: translateX(-50%);}
@@ -64,7 +64,7 @@
 .swiper-cards .swiper-slide {border-radius: 6px;border: 1px solid black;}
 
  @media only screen and (max-width: 1000px) {
-    #banner { border-bottom: 1px solid #ffffff1a; padding: 40px 0; } 
+    #banner { border-bottom: 1px solid #ffffff1a; } 
 }
 @media only screen and (max-width: 800px) {
 }

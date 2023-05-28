@@ -58,7 +58,7 @@
     .main-nav-mobile::before{background-color: #00000051;position: absolute;top: 0;left: 0;width: 100%;height: 100%;content: "";}
     .main-nav-mobile-con{position: absolute;background-color: black;top: 0;right: 0;width: 300px;height: 100%;}
 
-    .hamburger-menu { width: 41px; height: 2px; position: relative; z-index: 500;border-top: 2px solid #fff;border-bottom: 2px solid #fff;padding: 6px 0; cursor: pointer;display: none;float: right;} 
+    .hamburger-menu { width: 41px; height: 2px; position: relative; z-index: 500;border-top: 2px solid #fff;border-bottom: 2px solid #fff;padding: 6px 0; cursor: pointer;display: none;float: right;top: 30px;} 
     .hamburger-menu::before{background-color: #fff;content: "";width: 100%;height: 2px;position: absolute;top: 50%;transform: translateY(-50%);left: 0;right: 0;}
     .hamburger-menu:hover{opacity: .6;}
     .main_nav_mobile_close{cursor: pointer;}

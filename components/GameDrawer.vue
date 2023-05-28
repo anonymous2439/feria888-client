@@ -3,7 +3,13 @@
         <div class="wrapper">
             <div class="game-drawer-con">
                 <div class="game-drawer-box">
-                    <GameApp v-for="game in games" :icon="game.icon" :link="game.link">{{ game.title }}</GameApp>
+                    <GameApp 
+                        v-for="(game, i) in games"
+                        :key="i" 
+                        :icon="game.icon" 
+                        :link="game.link">
+                            {{ game.title }}
+                    </GameApp>
                 </div>
             </div>
         </div>
@@ -12,8 +18,20 @@
 </template>
 
 <script setup>
+    const props = defineProps({
+        category: String,
+    })
     const {data:response} = await useFetch('/api/games')
-    const games = toRaw(response.value.data)
+    const games_data = toRaw(response.value.data)
+    const games_state = useState('games', () => [])
+    games_state.value = games_data
+
+    let games = []
+    games_data.forEach(function(game){
+        if(!props.category || game.tags.includes(props.category))
+            games.push(game)
+    })
+    
 </script>
 
 <style scoped>    

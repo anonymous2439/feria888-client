@@ -1,7 +1,6 @@
 <template>
     <div>
-        <AppHeader />
-        <AppBanner />
+        <AppHeader />        
         <slot />
         <AppFooter />
     </div>

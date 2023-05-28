@@ -1,33 +1,35 @@
 <template>
     
-    <div class="wrapper">
-        <div class="header-con">
-            <div class="header-logo">
-                <div class="main-logo">
-                    <nuxt-link to="/"><img src="~/assets/images/main_logo.jpg" /></nuxt-link>
-                </div>                
-            </div>
-            <div class="main-nav">
-                <ul>
-                    <li>
-                        <nuxt-link @click="() => {login_is_active = !login_is_active}">Login</nuxt-link>
-                        <ModalLogin v-show="login_is_active" />
-                    </li>
-                    <li><nuxt-link>Register</nuxt-link></li>
-                </ul>
-                <div class="hamburger-menu" @click="() => {nav_is_active = !nav_is_active}"></div>
-            </div>
-            <div class="main-nav-mobile" v-show="nav_is_active">
-                <div class="main-nav-mobile-con">
-                    <div class="main_nav_mobile_close" @click="() => {nav_is_active = !nav_is_active}">x</div>
+    <div id="header">
+        <div class="wrapper">
+            <div class="header-con">
+                <div class="header-logo">
+                    <div class="main-logo">
+                        <nuxt-link to="/"><img src="~/assets/images/main_logo.jpg" /></nuxt-link>
+                    </div>           
+                </div>
+                
+                <div class="main-nav-mobile" v-show="nav_is_active">
+                    <div class="main-nav-mobile-con">
+                        <div class="main_nav_mobile_close" @click="() => {nav_is_active = !nav_is_active}">x</div>
+                        <CategoryList />
+                    </div>
+                </div>
+
+                <div class="main-nav">
                     <ul>
-                        <li><nuxt-link>Login</nuxt-link></li>
+                        <li>
+                            <nuxt-link @click="() => {login_is_active = !login_is_active}">Login</nuxt-link>
+                            <ModalLogin v-show="login_is_active" />
+                        </li>
                         <li><nuxt-link>Register</nuxt-link></li>
                     </ul>
+                    <div class="hamburger-menu" @click="() => {nav_is_active = !nav_is_active}"></div>
                 </div>
+                <div class="clearfix"></div>                
             </div>
-            <div class="clearfix"></div>
         </div>
+        <AppCategories />
     </div>
 
     
@@ -43,6 +45,7 @@
 </script>
 
 <style scoped>
+    #header{position: relative;}
     .header-con{position: relative;padding-top: 10px;}
     .main-logo{float: left;}
     .main-logo img{width: 100px; height: auto;}
@@ -65,7 +68,6 @@
 
     }
     @media only screen and (max-width: 800px) {
-        .main-nav ul{display: none;}
         .hamburger-menu{display: block;}
     }
 

@@ -47,7 +47,7 @@
     .app-footer-col ul li { margin-top: 12px; } 
     .app-footer-col ul li a:hover { text-decoration: underline; } 
     .footer-logo {max-width: 210px;}
-    .copyright{text-align: center; background-color: var(--primary-color);padding:15px 10px;}
+    .copyright{text-align: center; background-color: var(--primary-color);padding:15px 10px; position: relative;}
     
     @media only screen and (max-width: 1000px) {
         .app-footer-col { width: 48%; text-align: center; margin-bottom: 40px; } 

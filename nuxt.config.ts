@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     css: ['~/assets/css/global.css'],
     modules: ['nuxt-swiper'],
-    app: {
-        baseURL: '/feria888-client/dist/'
-      }
+    // app: {
+    //     baseURL: '/feria888-client/dist/'
+    //   }
 })

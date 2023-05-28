@@ -2,14 +2,17 @@
     <div class="game-drawer">
         <div class="wrapper">
             <div class="game-drawer-con">
-                <div class="game-drawer-box">
+                <div class="game-drawer-box" v-if="games.length > 0">
                     <GameApp 
                         v-for="(game, i) in games"
                         :key="i" 
                         :icon="game.icon" 
                         :link="game.link">
                             {{ game.title }}
-                    </GameApp>
+                    </GameApp>                    
+                </div>
+                <div v-else class="no-games">
+                    Come back for more exciting games...
                 </div>
             </div>
         </div>

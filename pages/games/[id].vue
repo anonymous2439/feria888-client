@@ -2,7 +2,7 @@
     <div class="categories-page">
         <div class="wrapper">
             <div class="categories-page-con">
-                <h2>{{ category }}</h2>
+                <h2 class="category-name">{{ category }}</h2>
                 
                 <GameDrawer :category="category"/>
             </div>
@@ -21,3 +21,7 @@
     }
 
 </script>
+
+<style scoped>
+    
+</style>

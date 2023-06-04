@@ -24,6 +24,7 @@
     const props = defineProps({
         category: String,
     })
+
     const {data:response} = await useFetch('/api/games')
     const games_data = toRaw(response.value.data)
     const games_state = useState('games', () => [])

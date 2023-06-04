@@ -24,12 +24,14 @@
                         }
                     }"
                     >
-                    <SwiperSlide
-                        v-for="(slide, idx) in 2"
-                        :key="idx"
-                        :style="`background-color: ${slide.bg}; color: ${slide.color}`"
-                    >                        
-                            <figure><img src="~/assets/images/bnr_bg.jpg" /></figure>                                                                    
+                    <SwiperSlide>                        
+                            <figure><img src="~/assets/images/bnr1.webp" /></figure>                                                                    
+                    </SwiperSlide>
+                    <SwiperSlide>                        
+                            <figure><img src="~/assets/images/bnr2.webp" /></figure>                                                                    
+                    </SwiperSlide>
+                    <SwiperSlide>                        
+                            <figure><img src="~/assets/images/bnr3.webp" /></figure>                                                                    
                     </SwiperSlide>
 
                     <!-- useSwiper() within a swiper instance -->

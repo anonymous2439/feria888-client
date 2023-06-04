@@ -1,7 +1,7 @@
 <template>
 
     <div class="game-app">
-        <a :href="link">
+        <a :href="link" target="_blank">
             <figure><img :src="icon"/></figure>
             <p>
                 <slot></slot>

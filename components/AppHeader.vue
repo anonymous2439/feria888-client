@@ -16,13 +16,26 @@
                     </div>
                 </div>
                 <div class="hamburger-menu" @click="() => {nav_is_active = !nav_is_active}"></div>
-                <div class="main-nav">                    
+                <div class="main-nav">
+                    
                     <ul>
-                        <li>
+                        <li v-if="!user_info">
                             <nuxt-link @click="() => {login_is_active = !login_is_active}">Login</nuxt-link>
                             <ModalLogin v-show="login_is_active" />
                         </li>
-                        <li><nuxt-link>Register</nuxt-link></li>
+                        <li v-if="!user_info">
+                            <nuxt-link @click="() => {register_is_active = !register_is_active}">Register</nuxt-link>
+                            <ModalRegister v-show="register_is_active" />
+                        </li>
+                        <li v-if="user_info">
+                            <nuxt-link to="/profile">Profile</nuxt-link>
+                        </li>
+                        <li v-if="user_info && user_info.user.type_id == 2">
+                            <nuxt-link to="/admin">Admin Panel</nuxt-link>
+                        </li>
+                        <li v-if="user_info">
+                            <nuxt-link @click="logout">Logout</nuxt-link>
+                        </li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>                
@@ -35,12 +48,25 @@
 </template>
 
 <script setup>
-
+    const runTimeConfig = useRuntimeConfig()
     const login_is_active = useState('login_is_active')
-    const is_mobile = useState('is_mobile', () => false)
+    const register_is_active = useState('register_is_active')
     const nav_is_active = useState('nav_is_active', () => false)
+
+    const user_info_cookie = useCookie('user_info')
+    let user_info = user_info_cookie.value
     
-    const signup_is_active = useState('signup_is_active', () => false)
+    async function logout(){
+        const { data, refresh } = await useFetch(`${runTimeConfig.public.baseURL}/api/logout`, { 
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer '+user_info.token,
+            },
+        })
+        const user_info_cookie = useCookie('user_info')
+        user_info_cookie.value = null
+        window.location.replace('/')
+    }
 
 </script>
 

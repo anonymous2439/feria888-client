@@ -3,18 +3,33 @@
         <div class="login-modal-overlay modal-overlay" @click="() => {login_is_active = false}"></div>
         <div class="login-modal-con">
             
-            <form>
-                <input placeholder="Username" />
-                <input placeholder="Password" />
-                <button>Login</button>
+                <input v-model="formData.email" placeholder="Email" type="email" />
+                <input v-model="formData.password" placeholder="Password" type="password" />
+                <button @click="submitForm">Login</button>
 
-            </form>
         </div>
     </div>
 </template>
 
 <script setup>
-    const login_is_active = useState('login_is_active', () => false)
+    const runTimeConfig = useRuntimeConfig()
+    const login_is_active = useState('login_is_active', () => false);
+
+    let formData = {
+        'email': 'user@email.com',
+        'password': 'user',
+    }
+    
+    async function submitForm() {
+        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/login`, {
+        // const response = await $fetch('https://feria888.com/api/api/login', {
+            method: 'POST',
+            body: JSON.stringify(formData)
+        });
+        const cookie = useCookie('user_info')
+        cookie.value = response.value
+        window.location.reload(true)
+    }
 </script>
 
 <style scoped>

@@ -2,11 +2,21 @@
 export default defineNuxtConfig({
     css: [
         '~/assets/css/global.css',
-        '@fortawesome/fontawesome-free/css/all.css'
+        '@fortawesome/fontawesome-free/css/all.css',
+        '~/assets/fonts/opensans.css',
+        '~/assets/fonts/oswald.css'
     ],
     modules: ['nuxt-swiper'],
-    
-    // app: {
-    //     baseURL: '/feria888-client/dist/'
-    //   }
+    runtimeConfig: {
+        public: {
+          baseURL: process.env.BASE_URL || 'http://localhost/api/public',
+        },
+    },
+
+    // nitro: {
+    //     routeRules: {
+    //         '/api': { proxy: 'http://39.98.58.238:8594' },
+    //         "/proxy/**": { proxy: '/api/**' },
+    //       }
+    // },
 })

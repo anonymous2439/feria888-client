@@ -3,9 +3,12 @@
         <div class="register-modal-overlay modal-overlay" @click="() => {register_is_active = false}"></div>
         <div class="register-modal-con">
             
+                <input v-model="formData.username" placeholder="Username" type="text" required />
                 <input v-model="formData.email" placeholder="Email" type="email" required />
                 <input v-model="formData.password" placeholder="Password" type="password" requuired />
                 <input v-model="formData.password_confirmation" placeholder="Confirm Password" type="password" required />
+                <input v-model="formData.phone_number" placeholder="Phone Number" type="text" required />
+                <p style="color:black;">{{ message }}</p>
                 <button @click="submitForm">Register</button>
 
         </div>
@@ -15,14 +18,16 @@
 <script setup>
     const runTimeConfig = useRuntimeConfig()
     const register_is_active = useState('register_is_active', () => false);
-
     let formData = {}
+    const message = useState('teststate', () => '')
     
     async function submitForm() {
         const response = await $fetch(`${runTimeConfig.public.baseURL}/api/register`, {
             method: 'POST',
             body: JSON.stringify(formData)
         });
+        if(response.user)
+            message.value = "You have successfully registered!"
     }
 </script>
 

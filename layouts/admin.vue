@@ -1,9 +1,11 @@
 <template>
     <div class="admin-con">
         <AdminHeader />
-        <slot />
         <AdminMainNav />
+        <slot />
+        
     </div>
+    
 </template>
 
 <style>

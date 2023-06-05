@@ -3,7 +3,7 @@
         <div class="login-modal-overlay modal-overlay" @click="() => {login_is_active = false}"></div>
         <div class="login-modal-con">
             
-                <input v-model="formData.email" placeholder="Email" type="email" />
+                <input v-model="formData.username" placeholder="Username" type="text" />
                 <input v-model="formData.password" placeholder="Password" type="password" />
                 <button @click="submitForm">Login</button>
 
@@ -16,8 +16,8 @@
     const login_is_active = useState('login_is_active', () => false);
 
     let formData = {
-        'email': 'user@email.com',
-        'password': 'user',
+        'username': '',
+        'password': '',
     }
     
     async function submitForm() {

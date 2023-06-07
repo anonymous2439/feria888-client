@@ -2,11 +2,12 @@
     <div class="profile-page">
         <div class="wrapper">
             <h2 class="page-title">User Profile</h2> 
-            <a @click="editProfile">Edit</a> <a @click="changePassword">Change Password</a>
+            <a @click="editProfile">Edit</a> <a @click="cpassword_is_active = true">Change Password</a>
             <ul>
                 <li>
                     Email: 
-                    <span>{{ user.email }}</span>
+                    <span v-if="is_editing_profile == false">{{ user.email }}</span>
+                    <input v-else v-model="profile_form.email" />
                 </li>
                 <li>
                     Phone Number: 
@@ -16,6 +17,7 @@
             </ul>
             <button v-if="is_editing_profile" @click="submitEditForm">Submit</button>
         </div>
+        <ModalChangePassword v-if="cpassword_is_active" />
     </div>
 </template>
 
@@ -23,7 +25,7 @@
     const runTimeConfig = useRuntimeConfig()
     const user_info = useCookie('user_info')
     const is_editing_profile = useState('is_editing_profile', () => false)
-    
+    const cpassword_is_active = useState('cpassword_is_active', () => false);
 
     const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/get`, {
         method: 'GET',
@@ -39,19 +41,7 @@
 
     function editProfile(){
         is_editing_profile.value = !is_editing_profile.value
-    }
-
-    async function changePassword(){
-        const user_info = useCookie('user_info')
-        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/changepassword`, {
-            method: 'POST',
-            headers: {
-                Authorization: 'Bearer '+user_info.value.token,
-            },
-            body: JSON.stringify(profile_form)
-        });
-        window.location.reload(true)
-    }
+    }    
 
     async function submitEditForm(){
         const user_info = useCookie('user_info')

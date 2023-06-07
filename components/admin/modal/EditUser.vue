@@ -3,9 +3,18 @@
         <div class="edit-modal-overlay modal-overlay" @click="() => {register_is_active = false}"></div>
         <div class="edit-modal-con">
             
-                <input v-model="formData.phone_number" placeholder="Phone Number" type="text" required />
-                <p style="color:black;">{{ message }}</p>
-                <button @click="submitForm">Submit</button>
+            <input v-model="formData.username" placeholder="Username" type="text" required />
+            <input v-model="formData.email" placeholder="Email" type="email" required />
+            <input v-model="formData.phone_number" placeholder="Phone Number" type="text" required />
+            <select v-model="formData.type_id">
+                <!-- <option value="">Select user type</option> -->
+                <option v-for="(user_type, i) in user_types" :key="i" :value="user_type.id">
+                    {{ user_type.name }}
+                </option>
+            </select>
+            <p style="color:black;">{{ message }}</p>
+            <a @click="edit_modal_is_active = false">Cancel</a> | 
+            <a @click="submitForm">Update</a>            
 
         </div>
     </div>
@@ -13,16 +22,30 @@
 
 <script setup>
     const runTimeConfig = useRuntimeConfig()
-    let formData = {}
-    const message = useState('teststate', () => '')
+    const edit_modal_is_active = useState('edit_modal_is_active');    
+    const user_info = useCookie('user_info')
+    const {value:user_types} = useState('user_types')
+    const user_to_edit = useState('user_to_edit').value
+    console.log(user_to_edit)
+    let formData = {
+        username: user_to_edit.username,
+        email: user_to_edit.email,
+        phone_number: user_to_edit.phone_number,
+        type_id: user_to_edit.type_id ? user_to_edit.type_id : 1,
+    }
     
+    // submit update user form
     async function submitForm() {
-        const response = await $fetch(`${runTimeConfig.public.baseURL}/api/register`, {
+        const response = await $fetch(`${runTimeConfig.public.baseURL}/api/user/edit/${user_to_edit.id}`, {
             method: 'POST',
+            headers: {
+                Authorization: 'Bearer '+user_info.value.token,
+            },
             body: JSON.stringify(formData)
         });
-        if(response.user)
-            message.value = "You have successfully registered!"
+        // if(response.user)
+        //     message.value = "You have successfully updated a user!"
+        window.location.reload(true)
     }
 </script>
 

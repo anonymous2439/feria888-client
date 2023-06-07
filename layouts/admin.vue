@@ -1,17 +1,16 @@
 <template>
-    <div class="admin-con">
-        <AdminHeader />
-        <AdminMainNav />
-        <slot />
-        
+    <div class="app">
+        <div class="admin-con">
+            <AdminHeader />
+            <AdminMainNav />
+            <slot />
+            
+        </div>
     </div>
     
 </template>
 
-<style>
-    body, html{background: #fff;color: #000;}
-    body::before{
-        background: none;
-    }
+<style scoped>
+    .app{background: #fff;color: #000;}
     .admin-con{position: relative; z-index: 1;}
 </style>

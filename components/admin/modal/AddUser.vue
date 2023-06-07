@@ -8,6 +8,12 @@
                 <input v-model="formData.password" placeholder="Password" type="password" requuired />
                 <input v-model="formData.password_confirmation" placeholder="Confirm Password" type="password" required />
                 <input v-model="formData.phone_number" placeholder="Phone Number" type="text" required />
+                <select v-model="formData.type_id">
+                    <!-- <option disabled value="">Select user type</option> -->
+                    <option v-for="(user_type, i) in user_types" :key="i" :value="user_type.id" :selected="i == 0">
+                        {{ user_type.name }}
+                    </option>
+                </select>
                 <p style="color:black;">{{ message }}</p>
                 <button @click="submitForm">Add</button>
 
@@ -17,18 +23,27 @@
 
 <script setup>
     const runTimeConfig = useRuntimeConfig()
-    const add_modal_is_active = useState('add_modal_is_active');
-    let formData = {}
-    const message = useState('teststate', () => '')
+    const add_modal_is_active = useState('add_modal_is_active');    
+    const user_info = useCookie('user_info')
+    const {value:user_types} = useState('user_types')
+    let formData = {
+        type_id: user_types.length > 0 ? user_types[0].id : null
+    }
     
+    // submit add user form
     async function submitForm() {
-        const response = await $fetch(`${runTimeConfig.public.baseURL}/api/add`, {
+        const response = await $fetch(`${runTimeConfig.public.baseURL}/api/user/add`, {
             method: 'POST',
+            headers: {
+                Authorization: 'Bearer '+user_info.value.token,
+            },
             body: JSON.stringify(formData)
         });
         if(response.user)
             message.value = "You have successfully added a user!"
+        window.location.reload(true)
     }
+    
 </script>
 
 <style scoped>

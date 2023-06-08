@@ -3,13 +3,16 @@
         <div class="register-modal-overlay modal-overlay" @click="() => {register_is_active = false}"></div>
         <div class="register-modal-con">
             
-                <input v-model="formData.username" placeholder="Username" type="text" required />
-                <input v-model="formData.email" placeholder="Email" type="email" required />
-                <input v-model="formData.password" placeholder="Password" type="password" requuired />
-                <input v-model="formData.password_confirmation" placeholder="Confirm Password" type="password" required />
-                <input v-model="formData.phone_number" placeholder="Phone Number" type="text" required />
-                <p style="color:black;">{{ message }}</p>
-                <button @click="submitForm">Register</button>
+                <form @submit.prevent="submitForm">
+                    <input v-model="formData.username" placeholder="Username" type="text" required />
+                    <input v-model="formData.email" placeholder="Email" type="email" required />
+                    <input v-model="formData.password" placeholder="Password" type="password" requuired />
+                    <input v-model="formData.password_confirmation" placeholder="Confirm Password" type="password" required />
+                    <input v-model="formData.phone_number" placeholder="Phone Number" type="text" required />
+                    <p style="color:black;">{{ message }}</p>
+                    <button @click="submitForm">Register</button>
+                    <p class="error_message">{{ register_message }}</p>
+                </form>
 
         </div>
     </div>
@@ -19,15 +22,19 @@
     const runTimeConfig = useRuntimeConfig()
     const register_is_active = useState('register_is_active', () => false);
     let formData = {}
-    const message = useState('teststate', () => '')
+    const register_message = useState('register_message', () => '')
     
     async function submitForm() {
-        const response = await $fetch(`${runTimeConfig.public.baseURL}/api/register`, {
+        useFetch(`${runTimeConfig.public.baseURL}/api/register`, {
             method: 'POST',
             body: JSON.stringify(formData)
-        });
-        if(response.user)
-            message.value = "You have successfully registered!"
+        })
+        .then(({data:response}) => {
+            if(response.value.success)
+                register_message.value = "You have successfully registered!"
+            else
+                register_message.value = "Something went wrong while trying to register your information"
+        })        
     }
 </script>
 

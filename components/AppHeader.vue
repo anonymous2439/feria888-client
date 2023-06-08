@@ -54,7 +54,7 @@
     const nav_is_active = useState('nav_is_active', () => false)
 
     const user_info_cookie = useCookie('user_info')
-    let user_info = user_info_cookie.value
+    const user_info = user_info_cookie.value
     
     async function logout(){
         const { data, refresh } = await useFetch(`${runTimeConfig.public.baseURL}/api/logout`, { 

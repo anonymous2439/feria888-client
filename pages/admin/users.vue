@@ -30,10 +30,6 @@
 </template>
 
 <script setup>
-    // import DataTable from 'datatables.net-vue3'
-    // import Select from 'datatables.net-select';
-    // DataTable.use(Select);
-
     definePageMeta({
         layout: "admin",
     });
@@ -42,6 +38,7 @@
     const add_modal_is_active = useState('add_modal_is_active', () => false)
     const edit_modal_is_active = useState('edit_modal_is_active', () => false)
     const user_to_edit = useState('user_to_edit', () => {})
+    const is_loading = useState('is_loading', () => false)
 
     // get users data
     const {data:users_data, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/users`, {

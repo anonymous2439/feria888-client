@@ -41,7 +41,7 @@
 </script>
 
 <style scoped>    
-    .game-drawer-con{background: #00000061;text-align: center;padding: 40px 25px;}
+    .game-drawer-con{background: #000000B3;text-align: center;padding: 40px 25px;}
     .game-drawer-con h2 {text-align: left;margin-bottom: 28px;text-decoration: underline; text-transform: uppercase;}
      .game-drawer-box{display: flex;justify-content: flex-start;column-gap: 17px;flex-wrap: wrap;}
 

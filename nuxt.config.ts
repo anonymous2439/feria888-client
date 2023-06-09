@@ -9,7 +9,8 @@ export default defineNuxtConfig({
     modules: ['nuxt-swiper'],
     runtimeConfig: {
         public: {
-          baseURL: process.env.BASE_URL || 'http://localhost/api/public',
+        //   baseURL: process.env.BASE_URL || 'http://localhost/api/public',
+          baseURL: process.env.BASE_URL || 'https://feria888.com/api',
         },
     },
 

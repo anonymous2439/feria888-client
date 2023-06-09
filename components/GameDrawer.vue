@@ -2,7 +2,8 @@
     <div class="game-drawer">
         <div class="wrapper">
             <div class="game-drawer-con">
-                <div class="game-drawer-box" v-if="games.length > 0">
+                <h2>{{ title }}</h2>
+                <div class="game-drawer-box" v-if="games.length > 0">                    
                     <GameApp 
                         v-for="(game, i) in games"
                         :key="i" 
@@ -23,6 +24,7 @@
 <script setup>
     const props = defineProps({
         category: String,
+        title: String,
     })
 
     const {data:response} = await useFetch('/api/games')
@@ -40,10 +42,11 @@
 
 <style scoped>    
     .game-drawer-con{background: #00000061;text-align: center;padding: 40px 25px;}
+    .game-drawer-con h2 {text-align: left;margin-bottom: 28px;text-decoration: underline; text-transform: uppercase;}
      .game-drawer-box{display: flex;justify-content: flex-start;column-gap: 17px;flex-wrap: wrap;}
 
      
      @media only screen and (max-width: 1000px) {
-        .game-drawer { border-bottom: 1px solid #ffffff1a; padding-bottom: 40px; } 
+        .game-drawer { border-bottom: 1px solid #ffffff1a; padding-bottom: 40px;} 
     }
 </style>

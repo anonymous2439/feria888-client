@@ -1,16 +1,13 @@
 <template>
     <AppBanner />
     <div class="hot-games games-catalogue">
-        <h2>Hot Games</h2>
-        <GameDrawer category="hot" />
+        <GameDrawer category="hot" title="Hot Games" />
     </div>
     <div class="new-games games-catalogue">
-        <h2>New Games</h2>
-        <GameDrawer category="hot" />
+        <GameDrawer category="hot" title="New Games" />
     </div>
 </template>
 
 <style scoped>
-    .games-catalogue{position: relative;}
-    .games-catalogue h2{text-align: center;}
+    .games-catalogue{position: relative; margin-bottom: 25px;}
 </style>

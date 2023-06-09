@@ -3,6 +3,8 @@
 # Navigate to the production directory
 cd production
 
+git reset --hard origin main
+
 # Remove all files except .git and .gitignore
 shopt -s extglob
 rm -rf !(.git|.gitignore|api)

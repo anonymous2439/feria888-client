@@ -14,9 +14,8 @@
                         {{ user_type.name }}
                     </option>
                 </select>
-                <p style="color:black;">{{ message }}</p>
                 <button @click="submitForm">Add</button>
-
+                
         </div>
     </div>
 </template>
@@ -26,12 +25,15 @@
     const add_modal_is_active = useState('add_modal_is_active');    
     const user_info = useCookie('user_info')
     const {value:user_types} = useState('user_types')
+    const content_is_loading = useState('content_is_loading', () => false)
+    
     let formData = {
         type_id: user_types.length > 0 ? user_types[0].id : null
     }
     
     // submit add user form
     async function submitForm() {
+        content_is_loading.value = true
         const response = await $fetch(`${runTimeConfig.public.baseURL}/api/user/add`, {
             method: 'POST',
             headers: {
@@ -39,9 +41,9 @@
             },
             body: JSON.stringify(formData)
         });
-        if(response.user)
-            message.value = "You have successfully added a user!"
-        window.location.reload(true)
+        if(response.user){
+            window.location.reload(true)
+        }
     }
     
 </script>

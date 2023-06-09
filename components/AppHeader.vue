@@ -20,11 +20,13 @@
                     
                     <ul>
                         <li v-if="!user_info">
-                            <nuxt-link @click="() => {login_is_active = !login_is_active}">Login</nuxt-link>
+                            <nuxt-link @click="() => {login_is_active = !login_is_active}" 
+                                class="flash-slide flash-slide--login">Login</nuxt-link>
                             <ModalLogin v-show="login_is_active" />
                         </li>
                         <li v-if="!user_info">
-                            <nuxt-link @click="() => {register_is_active = !register_is_active}">Register</nuxt-link>
+                            <nuxt-link @click="() => {register_is_active = !register_is_active}"
+                                class="flash-slide flash-slide--register">Register</nuxt-link>
                             <ModalRegister v-show="register_is_active" />
                         </li>
                         <li v-if="user_info">
@@ -78,7 +80,7 @@
     .main-nav{float: right;}
     .main-nav ul{display: flex;column-gap: 20px;padding-top: 40px;}
     .main-nav ul li { position: relative; cursor: pointer;} 
-    .main-nav ul li a:hover{text-decoration: underline;}
+    .main-nav ul li a:hover{text-decoration: none;}
 
     .main-nav-mobile{z-index:1000;position: fixed;width: 100%;height: 100%;top: 0;left: 0;transition: .6s;}
     .main-nav-mobile::before{background-color: #00000051;position: absolute;top: 0;left: 0;width: 100%;height: 100%;content: "";}
@@ -100,4 +102,42 @@
         .main-nav ul { justify-content: center; } 
     }
 
+.flash-slide {
+  border: none;
+  display: inline-block;
+  color: #fff;
+  margin: 0px;
+  width: 110px;
+  height: 30px;
+  border-radius: 5px;
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Helvetica;
+  cursor: pointer;
+  text-align:center;
+}
+.flash-slide:before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -80px;
+  height: 100px;
+  width: 70px;
+  background: rgba(255, 255, 255, .3);
+  transform: rotate(20deg);
+}
+.flash-slide:hover:before {
+  left: 190px;
+  transition: all .7s;
+}
+.flash-slide--login{
+  background: #ebb948;
+}
+.flash-slide--register{
+  background: #c8371a;
+}
 </style>

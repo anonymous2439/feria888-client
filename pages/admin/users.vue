@@ -1,8 +1,10 @@
 <template>
     <div class="users-page">
         <h2 class="page-title">Users</h2>
-        <a @click="() => add_modal_is_active = !add_modal_is_active">Add</a>
-        <table id="tbl-users" class="display">
+        <div class="table-nav">
+            <a @click="() => add_modal_is_active = !add_modal_is_active">Add</a>
+        </div>
+        <Datatables>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -23,7 +25,7 @@
                     <td>(<a @click="onEditClick(user)">Edit</a> <a @click="onDeleteClick(user.id)">Delete</a>)</td>
                 </tr>
             </tbody>
-        </table>
+        </Datatables>
     </div>
     <AdminModalAddUser v-if="add_modal_is_active" />
     <AdminModalEditUser v-if="edit_modal_is_active" />
@@ -38,7 +40,8 @@
     const add_modal_is_active = useState('add_modal_is_active', () => false)
     const edit_modal_is_active = useState('edit_modal_is_active', () => false)
     const user_to_edit = useState('user_to_edit', () => {})
-    const is_loading = useState('is_loading', () => false)
+    const content_is_loading = useState('content_is_loading')
+    content_is_loading.value = true
 
     // get users data
     const {data:users_data, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/users`, {
@@ -47,7 +50,7 @@
             Authorization: 'Bearer '+user_info.value.token,
         },
     });
-    const users = users_data.value
+    const users = users_data.value    
 
     // get user types data
     const user_types_data = await $fetch(`${runTimeConfig.public.baseURL}/api/user/types`, {
@@ -58,6 +61,8 @@
     });
     const user_types = useState('user_types', () => user_types_data)
 
+    content_is_loading.value = false
+
     // on edit click
     function onEditClick(user){
         edit_modal_is_active.value = true
@@ -65,6 +70,7 @@
     }
 
     async function onDeleteClick(id){
+        content_is_loading.value = true
         const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/${id}`, {
             method: 'DELETE',
             headers: {
@@ -75,3 +81,7 @@
     }
 
 </script>
+
+<style scoped>
+    .table-nav a{cursor: pointer; }
+</style>

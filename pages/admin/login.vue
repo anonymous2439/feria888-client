@@ -1,15 +1,17 @@
 <template>
     <div class="admin-login">
-        <input v-model="formData.email" placeholder="Email" type="email" />
-        <input v-model="formData.password" placeholder="Password" type="password" />
-        <button @click="submitForm">Login</button>
+        <form @submit.prevent="submitForm">
+            <input v-model="formData.username" placeholder="Username" type="text" />
+            <input v-model="formData.password" placeholder="Password" type="password" />
+            <button @click="submitForm">Login</button>
+        </form>
     </div>
 </template>
 
 <script setup>
     const runTimeConfig = useRuntimeConfig()
     definePageMeta({
-        layout: "admin",
+        layout: "login",
     });
 
     let formData = {
@@ -29,7 +31,7 @@
 </script>
 
 <style>
-    .admin-login{
+    .admin-login form{
         display: flex;
         flex-direction: column;
         max-width: 500px;

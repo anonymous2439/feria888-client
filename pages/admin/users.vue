@@ -22,13 +22,14 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.phone_number }}</td>
                     <td>{{ user.type }}</td>
-                    <td>(<a @click="onEditClick(user)">Edit</a> <a @click="onDeleteClick(user.id)">Delete</a>)</td>
+                    <td>(<a @click="onEditClick(user)">Edit</a> <a @click="onDeleteClick(user)">Delete</a>)</td>
                 </tr>
             </tbody>
         </Datatables>
     </div>
     <AdminModalAddUser v-if="add_modal_is_active" />
     <AdminModalEditUser v-if="edit_modal_is_active" />
+    <AdminModalDeleteUser v-if="delete_modal_is_active" />
 </template>
 
 <script setup>
@@ -39,7 +40,9 @@
     const user_info = useCookie('user_info')
     const add_modal_is_active = useState('add_modal_is_active', () => false)
     const edit_modal_is_active = useState('edit_modal_is_active', () => false)
+    const delete_modal_is_active = useState('delete_modal_is_active', () => false)
     const user_to_edit = useState('user_to_edit', () => {})
+    const user_to_delete = useState('user_to_delete', () => {})
     const content_is_loading = useState('content_is_loading')
     content_is_loading.value = true
 
@@ -69,15 +72,9 @@
         user_to_edit.value = user
     }
 
-    async function onDeleteClick(id){
-        content_is_loading.value = true
-        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/${id}`, {
-            method: 'DELETE',
-            headers: {
-                Authorization: 'Bearer '+user_info.value.token,
-            },
-        });
-        window.location.reload(true)
+    async function onDeleteClick(user){
+        delete_modal_is_active.value = true
+        user_to_delete.value = user
     }
 
 </script>

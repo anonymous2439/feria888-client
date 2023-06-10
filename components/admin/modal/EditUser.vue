@@ -26,7 +26,7 @@
     const user_info = useCookie('user_info')
     const {value:user_types} = useState('user_types')
     const user_to_edit = useState('user_to_edit').value
-    console.log(user_to_edit)
+
     let formData = {
         username: user_to_edit.username,
         email: user_to_edit.email,

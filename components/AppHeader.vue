@@ -48,6 +48,7 @@
 </template>
 
 <script setup>
+    import { onMounted } from 'vue';
     const runTimeConfig = useRuntimeConfig()
     const login_is_active = useState('login_is_active')
     const register_is_active = useState('register_is_active')

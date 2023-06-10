@@ -7,6 +7,11 @@ export default defineNuxtConfig({
         '~/assets/fonts/oswald.css'
     ],
     modules: ['nuxt-swiper'],
+    generate: {
+        routes: [
+          '/profile'
+        ]
+    },
     runtimeConfig: {
         public: {
         //   baseURL: process.env.BASE_URL || 'http://localhost/api/public',

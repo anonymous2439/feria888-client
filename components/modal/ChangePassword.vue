@@ -32,8 +32,7 @@
             },
         });
         user_info.value = response.value
-        console.log(response.value)
-        // window.location.reload(true)
+        window.location.reload(true)
     }
 </script>
 

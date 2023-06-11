@@ -10,9 +10,7 @@
     definePageMeta({
         layout: "admin",
     });
-    const cookie = useCookie('user_info')
-    if(!cookie.value)
-        await navigateTo({ path: '/admin/login' })
+    
 </script>
 
 <style scoped>

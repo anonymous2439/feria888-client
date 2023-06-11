@@ -14,6 +14,9 @@
 </template>
 
 <script setup>
+    const cookie = useCookie('user_info')
+    if(!cookie.value)
+        window.location.replace('/admin/login')
     const content_is_loading = useState('content_is_loading', () => false)
 </script>
 

@@ -22,13 +22,14 @@
 </template>
 
 <script setup>
+    import games_data from '~/assets/data/games.json';
     const props = defineProps({
         category: String,
         title: String,
     })
 
-    const {data:response} = await useFetch('/api/games')
-    const games_data = toRaw(response.value.data)
+    // const {data:response} = await useFetch('/api/games')
+    // const games_data = toRaw(response.value.data)
     const games_state = useState('games', () => [])
     games_state.value = games_data
 

@@ -7,12 +7,15 @@
                 <li>
                     Email: 
                     <span v-if="is_editing_profile == false">{{ user && user.email }}</span>
-                    <input v-else v-model="profile_form.email" />
+                    <input v-else v-model="profile_form.email" type="email" />
                 </li>
                 <li>
                     Phone Number: 
                     <span v-if="is_editing_profile == false">{{ user && user.phone_number }}</span>
                     <input v-else v-model="profile_form.phone_number" />
+                </li>
+                <li>
+                    Coin Balance: <span>{{ profile_form.coins }}</span>
                 </li>
             </ul>
             <button v-if="is_editing_profile" @click="submitEditForm">Submit</button>
@@ -40,6 +43,7 @@
         profile_form.value = {
             email: user.email,
             phone_number: user.phone_number,
+            coins: user.coins[0].coin_balance,
         }
     }
     else {

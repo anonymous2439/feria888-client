@@ -40,10 +40,11 @@
             },
         });
         user = response.value
+        console.log(user)
         profile_form.value = {
             email: user.email,
             phone_number: user.phone_number,
-            coins: user.coins[0].coin_balance,
+            // coins: user.coins[0].coin_balance,
         }
     }
     else {

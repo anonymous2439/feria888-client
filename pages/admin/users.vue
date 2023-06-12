@@ -47,7 +47,6 @@
     // state
     const details_modal_is_active = useState('details_modal_is_active', () => false)
     const add_modal_is_active = useState('add_modal_is_active', () => false)
-    const edit_modal_is_active = useState('edit_modal_is_active', () => false)
     const delete_modal_is_active = useState('delete_modal_is_active', () => false)
     const user_to_view = useState('user_to_view', () => {})
     const user_to_delete = useState('user_to_delete', () => {})

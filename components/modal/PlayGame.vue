@@ -10,7 +10,8 @@
                     <img :src="props.icon" />
                 </div>
                 <div class="footer">
-                    <a :href="props.link" target="_blank" class="btn-primary">Play</a>
+                    <a :href="props.link" target="_blank" class="btn-primary">Play for Real</a>
+                    <a :href="props.link" target="_blank" class="btn-secondary">Play for Fun</a>                    
                     <a @click="closeModal" class="btn-secondary outline">Cancel</a>                
                 </div>
             </div>
@@ -37,6 +38,6 @@
     .overlay {background: #00000090;position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
     .content {position: absolute;top: 50%;left: 0;right: 0;max-width: 500px;margin: 0 auto;padding: 40px 15px;background: #fff;color: #1a1a1a;border-radius: 8px;transform: translateY(-55%);}
     .body {padding: 15px 0;}
-    .footer {display: flex;flex-direction: column;border-top: 1px solid #000;padding: 15px 0 0;row-gap: 12px;}
+    .footer {display: flex;border-top: 1px solid #000;padding: 15px 0 0;column-gap: 12px;flex-wrap: wrap;justify-content: center;row-gap: 12px;}
     .footer a {max-width: 122px;width: 100%;}
 </style>

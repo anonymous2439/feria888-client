@@ -50,7 +50,7 @@
     .game-app-overlay { background: #0000007D;width: 100%;height: 100%;position: absolute; top: 0;left: 0; opacity: 0; transition: .6s;}
     .game-app-links {position: absolute;left: 0;right: 0;top: 50%;transform: translateY(-50%); opacity: 0;padding: 0 10px; transition: .6s;}
     .link-mobile {position: absolute;top: 0;left: 0;width: 100%;height: 100%;cursor: pointer; display: none;}
-    .game-app-con a{max-width: 194px;}
+    .game-app-con a{max-width: 120px;}
 
     @media only screen and (max-width: 1200px) {
         .game-app { width: calc((100% - 85px)/6); } 

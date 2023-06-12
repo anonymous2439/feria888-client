@@ -32,7 +32,7 @@
 </script>
 
 <style scoped>
-    .play-game-modal {width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 1;}
+    .play-game-modal {width: 100%;position: fixed;top: 0;left: 0;z-index: 1;height: 100vh;}
     .modal-container {position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: 0 5%;}
     .overlay {background: #00000090;position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
     .content {position: absolute;top: 50%;left: 0;right: 0;max-width: 500px;margin: 0 auto;padding: 40px 15px;background: #fff;color: #1a1a1a;border-radius: 8px;transform: translateY(-55%);}

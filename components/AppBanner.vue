@@ -69,5 +69,6 @@
     #banner { border-bottom: 1px solid #ffffff1a; } 
 }
 @media only screen and (max-width: 800px) {
+    #banner {padding: 40px 0 0;}
 }
 </style>

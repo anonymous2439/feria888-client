@@ -25,22 +25,24 @@
                 <div class="hamburger-menu" @click="() => {nav_is_active = !nav_is_active}"></div>
                 <div class="main-nav">
                     
-                    <ul>
-                        <li v-if="!user_info">
+                    <ul v-if="!user_info">
+                        <li>
                             <nuxt-link @click="() => {login_is_active = !login_is_active}" class="btn-primary">Login</nuxt-link>
                             <ModalLogin v-show="login_is_active" />
                         </li>
-                        <li v-if="!user_info">
+                        <li>
                             <nuxt-link @click="() => {register_is_active = !register_is_active}" class="btn-secondary">Register</nuxt-link>
                             <ModalRegister v-show="register_is_active" />
                         </li>
-                        <li v-if="user_info">
+                    </ul>
+                    <ul v-else class="user-functions">
+                        <li>
                             <nuxt-link to="/profile">Profile</nuxt-link>
                         </li>
-                        <li v-if="user_info && user_info.user.type_id == 2">
+                        <li v-if="user_info.user.type_id == 2">
                             <nuxt-link to="/admin">Admin Panel</nuxt-link>
                         </li>
-                        <li v-if="user_info">
+                        <li>
                             <nuxt-link @click="logout">Logout</nuxt-link>
                         </li>
                     </ul>
@@ -48,7 +50,7 @@
                 <div class="clearfix"></div>                
             </div>
         </div>
-        <AppCategories />
+        <AppCategories />        
     </div>
 
     
@@ -86,6 +88,10 @@
     .main-nav{float: right;}
     .main-nav ul{display: flex;column-gap: 20px;padding-top: 40px;}
     .main-nav ul li { position: relative; cursor: pointer;} 
+    ul.user-functions a {color: #fff;font-size: 18px;text-decoration: none;}
+    ul.user-functions li a:hover::before { animation: forwards; width: 100%; } 
+    ul.user-functions li a::before { display: block; transition: .3s; background: var(--primary-color); content: ""; height: 4px; width: 0; position: absolute; left: 0; bottom: -5px; right: 0; margin: 0 auto; } 
+ 
 
 
     .nav-mobile-header {border-bottom: 1px solid #ffffff56;padding-bottom: 10px;}

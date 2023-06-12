@@ -17,6 +17,7 @@
     "datatables.net-select": "^1.6.2",
     "datatables.net-vue3": "^2.1.0",
     "jquery": "^3.7.0",
-    "nuxt-swiper": "^1.1.0"
+    "nuxt-swiper": "^1.1.0",
+    "sass": "^1.63.3"
   }
 }

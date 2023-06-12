@@ -9,6 +9,7 @@
                     <button @click="submitForm">Login</button>                
                     <div v-if="is_loading" style="color:#1a1a1a">
                         <img src="~/assets/images/loader.gif" />
+                        <!-- <LoaderCardShuffle /> -->
                     </div>                
                     <p v-else class="error_message">{{ login_message }}</p>
                 </form>

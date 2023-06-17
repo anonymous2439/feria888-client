@@ -29,7 +29,7 @@
                         <li>
                             <nuxt-link @click="() => {login_is_active = !login_is_active}" 
                                 class="flash-slide flash-slide--login">
-                                <img src="~/public/images/user.png" id="img-login">
+                                <img src="/images/user.png" id="img-login">
                                 Login</nuxt-link>
                             <ModalLogin v-show="login_is_active" />
                         </li>

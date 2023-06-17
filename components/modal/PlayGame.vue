@@ -5,7 +5,7 @@
             <div class="content">
                 <div class="">
                     <div class="">
-                        <a @click="closeModal" class="close-btn"><img src="~/public/images/closebutton.png" /></a>
+                        <a @click="closeModal" class="close-btn"><img src="/images/closebutton.png" /></a>
                     </div>
                     <div class="header-modal">
                         <h2><slot /></h2>

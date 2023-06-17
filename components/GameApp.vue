@@ -6,10 +6,9 @@
             <figure>
                 <img :src="icon"/>
                 <div class="game-app-links">
-                    <!-- <a :href="link" target="_blank">Play</a> -->
                     <a @click="playClick" class="btn-primary">Play</a>
                 </div>
-                <!--<div class="link-mobile" @click="playClick"></div>-->
+                <div class="link-mobile" @click="playClick"></div>
             </figure>            
         </div>
         <ModalPlayGame :modal_active="play_active" :icon="props.icon" :link="props.link" :activeModal="modalCallback">

@@ -131,6 +131,7 @@ const paginatedData = computed(() => {
 </script>
 
 <style scoped>
+    @import 'datatables.net-dt';
     input[type=text], input[type=password], input[type=email] {
         width: 200px;
         padding: 12px 20px;
@@ -176,7 +177,7 @@ const paginatedData = computed(() => {
     .btn-input--add{
         background: #c8371a;
     }
-    @import 'datatables.net-dt';
+    
     .table-nav a img{
         cursor: pointer;
         height: 30px;

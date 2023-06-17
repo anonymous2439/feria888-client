@@ -1,6 +1,6 @@
-:root { --primary-color: #e4b536; --secondary-color: #d43117; } 
+:root { --primary-color: #ebb948; --secondary-color: #c8371a; } 
 
-.wrapper { margin: 0 auto; padding: 0 1%; position: relative; }
+.wrapper { margin: 0 auto; padding: 0; position: relative; border: 0px solid pink;}
 html, body { color: #fff; font-family: 'Open Sans', sans-serif; margin:0; } 
 
 
@@ -24,3 +24,55 @@ p { margin: 0; }
 .btn-secondary {text-decoration: none; display: block;text-transform: uppercase;text-decoration: none;color: #fff;font-weight: 600;background: var(--secondary-color);margin: 0 auto;padding: 10px;border-radius: 5px;box-shadow:3px 3px 6px 1px #00000039;transition: .6s;cursor: pointer;border: 2px solid var(--secondary-color);}
 .btn-secondary.outline {background: none;border: 1px solid var(--secondary-color);border: 2px solid var(--secondary-color);color: var(--secondary-color);}
 .btn-secondary:hover {filter: brightness(1.1);}
+
+
+/*Underline hover*/
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #c8371a;
+  cursor: pointer;
+  text-decoration: none;
+}
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ebb948;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/*for Game title*/
+.title-hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #302e39;
+  cursor: pointer;
+}
+.title-hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #c8371a;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.title-hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+

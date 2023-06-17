@@ -7,7 +7,7 @@
             </ul>
         </div>
         <div class="header-nav">
-            <a @click="logout" class="logout-btn">Logout</a>
+            <a @click="logout" class="logout-btn logout-btn--logout">Logout</a>
         </div>
     </div>
 </template>
@@ -34,11 +34,49 @@
 </script>
 
 <style scoped>
-    .logout-btn{cursor: pointer;}
-    .header {background-color: #1a1a1a; color: #fff;width: 100%;position: relative; padding: 15px 0;}
-    .header-info {display: inline-block; vertical-align: top;}
-    .header-info ul {display: flex; column-gap: 80px;}
-    .header-nav {float: right;}
+    .logout-btn {
+        border: none;
+        display: inline-block;
+        color: #fff;
+        width: 100px;
+        padding-top: 7px;
+        height: 30px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align:center;
+        cursor: pointer;
+    }
+    .logout-btn:before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: -80px;
+        height: 100px;
+        width: 50px;
+        background: rgba(255, 255, 255, .3);
+        transform: rotate(20deg);
+    }
+    .logout-btn:hover:before {
+        left: 210px;
+        transition: all .7s;
+    }
+    .logout-btn--logout{
+        background: #c8371a;
+    }
+    .header {background-color: #ebb948; color: #fff;width: 100%;position: relative;padding: 10px 0px 20px;}
+    .header-info {
+        display: inline-block; 
+        vertical-align: top;
+        font-size: 20px;
+        border: 0px solid white;
+    }
+    .header-nav {
+        float: right;
+        border: 0px solid green;
+    }
     .header::before{content: "";width: 100%;background: inherit;position: absolute;top: 0;left: -100%;height: 100%;}
     .header::after{content: "";width: 100%;background: inherit;position: absolute;top: 0;right: -100%;height: 100%;}
 </style>

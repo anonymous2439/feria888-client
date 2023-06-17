@@ -11,7 +11,7 @@
 </template>
 
 <style scoped>
-.footer-menu { position: fixed; bottom: 0; left: 0; right: 0; background-color: #1a1a1a;box-shadow: 0 0 12px 3px #e4b536;display: none;} 
+.footer-menu { position: fixed; bottom: 0; left: 0; right: 0; background-color: #302e39;box-shadow: 0 0 12px 3px #ebb948;display: none;} 
  .footer-menu ul { display: flex; justify-content: space-between; } 
  .footer-menu ul li a { text-align: center; display: block; padding: 16px 0; } 
  .footer-menu ul li { width: 20%; } 

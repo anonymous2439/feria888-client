@@ -5,18 +5,18 @@
                 <div class="app-footer-col">
                     <h2>About Feria888</h2>
                     <ul>
-                        <li><a href="javascript:;">About Us</a></li>
-                        <li><a href="javascript:;">Refund Policy</a></li>
-                        <li><a href="javascript:;">Privacy Policy</a></li>
-                        <li><a href="javascript:;">Responsible Gaming</a></li>
-                        <li><a href="javascript:;">Terms and Conditions</a></li>
+                        <li><a href="javascript:;" class="hover-underline-animation">About Us</a></li>
+                        <li><a href="javascript:;" class="hover-underline-animation">Refund Policy</a></li>
+                        <li><a href="javascript:;" class="hover-underline-animation">Privacy Policy</a></li>
+                        <li><a href="javascript:;" class="hover-underline-animation">Responsible Gaming</a></li>
+                        <li><a href="javascript:;" class="hover-underline-animation">Terms and Conditions</a></li>
                     </ul>
                 </div>
                 <div class="app-footer-col">
                     <h2>Help</h2>
                     <ul>
-                        <li><a href="javascript:;">Contact Us</a></li>
-                        <li><a href="javascript:;">FAQ</a></li>
+                        <li><a href="javascript:;" class="hover-underline-animation">Contact Us</a></li>
+                        <li><a href="javascript:;" class="hover-underline-animation">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="app-footer-col">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="app-footer-col">
                     <a href="/">
-                        <figure class="footer-logo"><img src="~/assets/images/main_logo.jpg" alt="feria888 logo"></figure>
+                        <figure class="footer-logo"><img src="~/assets/images/main_logo.png" alt="feria888 logo"></figure>
                     </a>
                 </div>                
             </div>
@@ -43,16 +43,16 @@
 </template>
 
 <style scoped>
-    #app-footer { background: #00000061; position: relative; } 
-    .app-footer-con { display: flex; justify-content: space-between; padding:40px 0;} 
-    .app-footer-col ul li a { color: #fff; text-decoration: none; line-height: 100%; } 
+    #app-footer { background: #00000099; position: relative; border: 0px solid; } 
+    .app-footer-con { display: flex; justify-content: space-between; padding:40px 10px;border: 0px solid yellow; margin-top: 10px;} 
+    .app-footer-col ul li a { color: #fff; text-decoration: none; line-height: 100%; border: 0px solid red;} 
     .app-footer-col ul li { margin-top: 12px; } 
-    .app-footer-col ul li a:hover { text-decoration: underline; } 
-    .footer-social { display: flex; align-items: center; column-gap: 10px; justify-content: center;} 
+    .app-footer-col ul li a:hover { text-decoration: none; padding-bottom: 3px;} 
+    .footer-social { display: flex; align-items: center; column-gap: 10px; justify-content: center; border: 0px solid blue;} 
     .footer-social li a { transition: .6s; } 
     .footer-social li a:hover { opacity: .7; } 
     .footer-logo {max-width: 210px;}
-    .copyright{text-align: center; background-color: var(--primary-color);padding:15px 10px; position: relative;}
+    .copyright{text-align: center; background-color: #ebb948;padding:15px 10px; position: relative; border-bottom: 5px solid #c8371a;}
     
     @media only screen and (max-width: 1000px) {
         .app-footer-col { width: 48%; text-align: center; margin-bottom: 40px; } 

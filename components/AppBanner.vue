@@ -54,11 +54,11 @@
 
 
 <style scoped>
-#banner{margin-bottom: 40px;}
+#banner{margin-bottom: 0px;}
 .bnr-con{position: relative;}
-.bnr-bg { position: relative; box-sizing: border-box;overflow: hidden;background: #00000061;} 
+.bnr-bg { position: relative; box-sizing: border-box;overflow: hidden;background: none; border:0px solid yellow;} 
  .bnr-bg figure img{filter: brightness(.9);width: 1920px;position: relative;left: 50%;transform: translateX(-50%);}
- .bnr-bg marquee { background: var(--primary-color); color: #fff; padding: 10px 10px; border-radius: 5px; font-weight: 600; font-size: 20px; } 
+ .bnr-bg marquee { background: #c8371a; color: #fff; padding: 10px 10px; border-radius: 0px; font-weight: 600; font-size: 20px; } 
  .swiper{max-height:500px;}
  .swiper-slide {display: flex;justify-content: center;align-items: center;font-size: 18px;font-size: 4rem;font-weight: bold;font-family: 'Roboto', sans-serif;}
 .swiper-wrapper {min-width: 100vh;width: 100vh;}

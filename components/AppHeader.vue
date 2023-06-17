@@ -39,7 +39,7 @@
                         <li>
                             <nuxt-link to="/profile">Profile</nuxt-link>
                         </li>
-                        <li v-if="user_info.user.type_id == 2">
+                        <li v-if="user_info.user.user_type.name == 'admin' || user_info.user.user_type.name == 'agent'">
                             <nuxt-link to="/admin">Admin Panel</nuxt-link>
                         </li>
                         <li>

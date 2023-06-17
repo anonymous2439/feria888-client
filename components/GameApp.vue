@@ -22,6 +22,7 @@
 
 <script setup>
 
+    const user_info = useCookie('user_info')
     const props = defineProps({
         icon: String,
         link: String,

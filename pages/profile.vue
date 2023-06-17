@@ -6,12 +6,12 @@
             <ul>
                 <li>
                     Email: 
-                    <span v-if="is_editing_profile == false">{{ user && user.email }}</span>
+                    <span v-if="is_editing_profile == false">{{ profile_form.email }}</span>
                     <input v-else v-model="profile_form.email" type="email" />
                 </li>
                 <li>
                     Phone Number: 
-                    <span v-if="is_editing_profile == false">{{ user && user.phone_number }}</span>
+                    <span v-if="is_editing_profile == false">{{ profile_form.phone_number }}</span>
                     <input v-else v-model="profile_form.phone_number" />
                 </li>
                 <li>
@@ -26,31 +26,19 @@
 
 <script setup>
     const runTimeConfig = useRuntimeConfig()
-    const user_info = useCookie('user_info')
+    const user_info = useCookie('user_info').value
     const is_editing_profile = useState('is_editing_profile', () => false)
     const cpassword_is_active = useState('cpassword_is_active', () => false);
     const profile_form = useState('profile_form', () => {})
-    let user = {}
 
-    if (user_info.value){
-        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/get`, {
-            method: 'GET',
-            headers: {
-                Authorization: 'Bearer '+user_info.value.token,
-            },
-        });
-        user = response.value
-        console.log(user)
-        profile_form.value = {
-            email: user.email,
-            phone_number: user.phone_number,
-            // coins: user.coins[0].coin_balance,
-        }
+    profile_form.value = {
+        email: user_info.user.email,
+        phone_number: user_info.user.phone_number,
+        coins: user_info.user.coins[0].coin_balance,
     }
-    else {
-        if(process.client)
-            window.location.replace('/')
-    }
+
+    console.log(profile_form.value)
+
 
     function editProfile(){
         is_editing_profile.value = !is_editing_profile.value
@@ -61,7 +49,7 @@
         const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/update`, {
             method: 'POST',
             headers: {
-                Authorization: 'Bearer '+user_info.value.token,
+                Authorization: 'Bearer '+user_info.token,
             },
             body: JSON.stringify(profile_form.value)
             

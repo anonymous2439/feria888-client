@@ -32,7 +32,6 @@
     
     function submitForm() {
         useFetch(`${runTimeConfig.public.baseURL}/api/login`, {
-        // const response = await $fetch('https://feria888.com/api/api/login', {
             method: 'POST',
             body: JSON.stringify(formData)
         })

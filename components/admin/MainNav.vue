@@ -9,7 +9,10 @@
 </template>
 
 <script setup>
-    const user_info = useCookie('user_info')
+    const user_info = useCookie('user_info').value
+    if(user_info.user.user_type.name == 'user'){
+        window.location.replace('/403')
+    }
 </script>
 
 <style scoped>

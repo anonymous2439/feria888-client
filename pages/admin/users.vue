@@ -12,6 +12,7 @@
                         <th>Username</th>
                         <th>Email</th>
                         <th>Phone Number</th>
+                        <th>Coin Balance</th>
                         <th>User Type</th>
                         <th>Action</th>
                     </tr>
@@ -22,8 +23,18 @@
                         <td>{{ user.username }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.phone_number }}</td>
+                        <td>{{ user.coins.length > 0 ? user.coins[0].coin_balance : 0 }}</td>
                         <td>{{ user.user_type.name }}</td>
-                        <td>(<a @click="onDetailsClick(user)">Details</a> <a @click="onDeleteClick(user)">Delete</a>)</td>
+                        <td>
+                            (
+                            <template v-if="user_info.user.user_type.name == 'admin'">
+                                <a @click="onDetailsClick(user)">Details</a> <a @click="onDeleteClick(user)">Delete</a>
+                            </template>
+                            <template v-else-if="user_info.user.user_type.name == 'agent'">
+                                <a>Transfer Coins</a>
+                            </template>
+                            )
+                        </td>
                     </tr>
                 </tbody>
             </DataTable>
@@ -63,6 +74,7 @@
         },
     });
     const users = users_data.value
+    console.log(users)
 
     // get user types data
     const user_types_data = await $fetch(`${runTimeConfig.public.baseURL}/api/user/types`, {

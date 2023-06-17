@@ -2,7 +2,7 @@
     <div class="users-page">
         <h2 class="page-title">Users</h2>
         <div class="table-nav">
-            <a @click="() => add_modal_is_active = !add_modal_is_active">Add</a>
+            <a @click="() => add_modal_is_active = !add_modal_is_active"><img src="~/public/images/add.png" /></a>
         </div>
         <!-- <Datatables :onPageChange="handlePageChange"> -->
             <DataTable class="display">
@@ -119,6 +119,57 @@ const paginatedData = computed(() => {
 </script>
 
 <style scoped>
+    input[type=text], input[type=password], input[type=email] {
+        width: 200px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #c8371a;
+        border-radius: 4px;
+    }
+    input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+        outline: 2px solid #ebb948;
+    }
+    .btn-input {
+        border: none;
+        display: inline-block;
+        color: #fff;
+        margin-top: 8px;
+        padding-top: 13px 0px;
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: Helvetica;
+        text-align:center;
+        cursor: pointer;
+    }
+    .btn-input:before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: -80px;
+        height: 100px;
+        width: 70px;
+        background: rgba(255, 255, 255, .3);
+        transform: rotate(20deg);
+    }
+    .btn-input:hover:before {
+        left: 210px;
+        transition: all .7s;
+    }
+    .btn-input--add{
+        background: #c8371a;
+    }
     @import 'datatables.net-dt';
-    .table-nav a{cursor: pointer; }
+    .table-nav a img{
+        cursor: pointer;
+        height: 30px;
+    }
+    .table-nav a img:hover{
+        scale: 1.1;
+    }
 </style>

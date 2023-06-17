@@ -10,5 +10,5 @@
 </template>
 
 <style>
-    .category-name{ text-align: center; font-size: 40px; text-transform: uppercase; margin: 40px 0; } 
+    .category-name{ text-align: left; font-size: 40px; text-transform: uppercase; margin: 40px 0; color: #302e39; padding-left: 10px;} 
 </style>

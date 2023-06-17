@@ -34,7 +34,7 @@
     profile_form.value = {
         email: user_info.user.email,
         phone_number: user_info.user.phone_number,
-        coins: user_info.user.coins[0].coin_balance,
+        coins: user_info.user.coins.length > 0 ? user_info.user.coins[0].coin_balance : 0,
     }
 
     console.log(profile_form.value)

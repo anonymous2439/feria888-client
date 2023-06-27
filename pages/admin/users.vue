@@ -2,7 +2,7 @@
     <div class="users-page">
         <h2 class="page-title">Users</h2>
         <div class="table-nav">
-            <a @click="() => add_modal_is_active = !add_modal_is_active"><img src="~/public/images/add.png" /></a>
+            <a @click="() => add_modal_is_active = !add_modal_is_active"><img src="/images/add.png" /></a>
         </div>
         <!-- <Datatables :onPageChange="handlePageChange"> -->
             <DataTable class="display">
@@ -27,12 +27,7 @@
                         <td>{{ user.user_type.name }}</td>
                         <td>
                             (
-                            <template v-if="user_info.user.user_type.name == 'admin'">
-                                <a @click="onDetailsClick(user)">Details</a> <a @click="onDeleteClick(user)">Delete</a>
-                            </template>
-                            <template v-else-if="user_info.user.user_type.name == 'agent'">
-                                <a>Transfer Coins</a>
-                            </template>
+                            <a @click="onDetailsClick(user)">Details</a> <a v-if="user_info.user.user_type.name == 'admin'" @click="onDeleteClick(user)">Delete</a>
                             )
                         </td>
                     </tr>
@@ -74,7 +69,6 @@
         },
     });
     const users = users_data.value
-    console.log(users)
 
     // get user types data
     const user_types_data = await $fetch(`${runTimeConfig.public.baseURL}/api/user/types`, {

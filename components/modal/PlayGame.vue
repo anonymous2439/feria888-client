@@ -15,7 +15,7 @@
                     <img :src="props.icon" />
                 </div>
                 <div class="footer">
-                    <a :href="props.link" target="_blank" class="modal-btn modal-btn--practice">Practice</a>
+                    <a :href="props.link" target="_blank" class="modal-btn modal-btn--practice">Demo</a>
                     <a :href="props.link" target="_blank" class="modal-btn modal-btn--play-for-real">Play for Real</a>                    
                                     
                 </div>
@@ -82,7 +82,6 @@
         overflow: hidden;
         text-decoration: none;
         text-transform: uppercase;
-        font-family: Helvetica;
         text-align:center;
         cursor: pointer;
         font-size: 15px;

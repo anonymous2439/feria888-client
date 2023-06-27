@@ -21,8 +21,7 @@ export default defineNuxtConfig({
       },
     runtimeConfig: {
         public: {
-        //   baseURL: process.env.BASE_URL || 'http://localhost/api/public',
-          baseURL: process.env.BASE_URL || 'https://feria888.com/api',
+          baseURL: process.env.BASE_URL
         },
     },
 })

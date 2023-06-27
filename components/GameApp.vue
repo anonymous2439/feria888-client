@@ -5,10 +5,18 @@
             <div class="game-app-overlay"></div>
             <figure>
                 <img :src="icon"/>
-                <div class="game-app-links">
-                    <a @click="playClick" class="btn-primary">Play</a>
-                </div>
-                <div class="link-mobile" @click="playClick"></div>
+                <template v-if="user_info">
+                    <div class="game-app-links">
+                        <a @click="playClick" class="btn-primary">Play</a>
+                    </div>
+                    <div class="link-mobile" @click="playClick"></div>
+                </template>
+                <template v-else>
+                    <div class="game-app-links">
+                        <a @click="playClick" class="btn-primary">Login <br />or <br /> Register</a>
+                    </div>
+                    <a class="link-mobile" @click="playClick"></a>
+                </template>
             </figure>            
         </div>
         <ModalPlayGame :modal_active="play_active" :icon="props.icon" :link="props.link" :activeModal="modalCallback">

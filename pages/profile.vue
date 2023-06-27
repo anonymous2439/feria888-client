@@ -2,7 +2,10 @@
     <div class="profile-page">
         <div class="wrapper">
             <h2 class="page-title">User Profile</h2> 
-            <a @click="editProfile">Edit</a> <a @click="cpassword_is_active = true">Change Password</a>
+            <div class="profile-nav">
+                <a @click="editProfile">Edit</a>
+                <a @click="cpassword_is_active = true">Change Password</a>
+            </div>
             <ul>
                 <li>
                     Email: 
@@ -58,3 +61,9 @@
     }
 
 </script>
+
+<style scoped>
+    .profile-page {color: #000;}
+
+    .profile-nav { display: flex; column-gap: 20px; text-decoration: underline; } 
+</style>

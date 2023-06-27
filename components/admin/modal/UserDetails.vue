@@ -6,12 +6,14 @@
             
             <div class="edit-section" v-if="active_section == 1">
 
-                <a @click="editProfile">Edit</a>
-                <a v-if="is_editing_profile" @click="changePassword"> | Change Password</a>
+                <template v-if="user_info.user.user_type.name == 'admin'">
+                    <a @click="editProfile">Edit</a>
+                    <a v-if="is_editing_profile" @click="changePassword"> | Change Password</a>
+                </template>
                 
                 <ul>
                     <li>
-                        Username: 
+                        Username:
                         <span v-if="is_editing_profile == false">{{ formData && formData.username }}</span>
                         <input v-else v-model="formData.username" />
                     </li>
@@ -32,6 +34,20 @@
                                 {{ user_type.name }}
                             </option>
                         </select>
+                    </li>
+                    <li>
+                        Wallet Balance:
+                        {{ user_to_view.wallets.length ? user_to_view.wallets[0].wallet_balance : 0 }}
+                    </li>
+                    <li>
+                        Coin Balance:
+                        {{ user_to_view.coins.length ? user_to_view.coins[0].coin_balance : 0 }}
+                    </li>
+                    <li v-if="user_info.user.user_type.name == 'admin'">
+                        <button @click="load_wallet_is_clicked = !load_wallet_is_clicked">Load Wallet</button>
+                        <form v-if="load_wallet_is_clicked" @submit.prevent="submitLoadWallet(user_to_view.id)">
+                            <input v-model="wallet_amount" type="number" placeholder="Amount" /><button type="submit">Submit</button>
+                        </form>
                     </li>
                 </ul>
 
@@ -74,13 +90,13 @@
     const is_editing_profile = useState('is_editing_profile', () => false)
     const active_section = useState('active_section', () => 1)
 
-
     let formData = {
         username: user_to_view.username,
         email: user_to_view.email,
         phone_number: user_to_view.phone_number,
         type_id: user_to_view.type_id ? user_to_view.type_id : 1,
     }
+    let wallet_amount = 0
     
     // submit update user form
     async function submitUserForm() {
@@ -102,6 +118,7 @@
         active_section.value = 2
     }
 
+    // submit change password
     async function submitChangePassword() {
         const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/changepassword/${user_to_view.id}`, {
             method: 'POST',
@@ -111,6 +128,36 @@
             },
         });
         window.location.reload(true)
+    }
+
+    // submit load wallet
+    async function submitLoadWallet(id) {
+        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/wallet/load`, {
+            method: 'POST',
+            body: JSON.stringify({
+                user_id: id,
+                amount: this.wallet_amount,
+            }),
+            headers: {
+                Authorization: 'Bearer '+user_info.value.token,
+            },
+        });
+        if(response) {
+            window.location.reload(true)
+        }
+        else {
+            console.log("An error occurred")
+        }
+    }
+</script>
+
+<script>
+    export default {
+        data() {
+            return {
+                load_wallet_is_clicked: false,
+            }
+        }
     }
 </script>
 

@@ -138,7 +138,7 @@
             method: 'POST',
             body: JSON.stringify({
                 user_id: id,
-                amount: this.wallet_amount,
+                amount: wallet_amount,
             }),
             headers: {
                 Authorization: 'Bearer '+user_info.value.token,

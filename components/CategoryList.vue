@@ -42,7 +42,7 @@
         width: 80px;
         height: 80px;
         background: none;
-        border: 1px solid #c8371a;
+        border: 1px solid #fff;
         border-radius: 50px;
         box-sizing: border-box;
         font-size: 26px;
@@ -78,6 +78,18 @@
     .box:hover i{
         opacity: 0;
         z-index: -1;
+    }
+    @media only screen and (max-width: 1300px) {
+        .input{
+            border: none;
+            font-size: 16px;
+        }
+        .box i{
+        color: #fff;
+        } 
+        .box:hover input{
+            border: 1px solid white;
+        }
     }
     
     @media only screen and (max-width: 1000px) {

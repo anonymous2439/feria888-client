@@ -41,7 +41,7 @@
 
 <style scoped>
 
-    .game-app{max-width: 100%;width: calc((100% - 68px)/5);position: relative; margin-bottom: 25px;}
+    .game-app{max-width: 100%;width: calc((100% - 68px)/5);position: relative; margin-bottom: 10px;}
     .game-app h4{text-align: center;}
     .game-app p { color: #fff; text-overflow: ellipsis;width: 100%;max-width: 100%;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;} 
     .game-app-con { text-decoration: none;transition: .6s;position: relative;border: 0px solid red; filter: drop-shadow(0 0 0.20rem #000000);} 
@@ -63,6 +63,8 @@
         .link-mobile {display: block;}
     }
     @media only screen and (max-width: 600px) {
-        .game-app {width: calc((100% - 17px)/2);}
+        .game-app {
+            width: calc((100% - 17px)/2);
+        }
     }
 </style>

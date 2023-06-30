@@ -46,7 +46,7 @@
 <style scoped>
     .register-modal { position: absolute; right: 0; top: 100%; z-index: 500; } 
   .register-modal-con { background: #fff; color: #000000; padding: 20px; border-radius: 5px;position: relative; cursor: default;}
-  input[type=text], input[type=password], input[type=email] {
+    input {
         width: 200px;
         padding: 12px 20px;
         margin: 8px 0;
@@ -54,7 +54,7 @@
         border: 1px solid #c8371a;
         border-radius: 4px;
     }
-    input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+    input:focus{
         outline: 2px solid #ebb948;
     }
     .btn-input {
@@ -100,12 +100,72 @@
         cursor: pointer;
     }
     
-  .register-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0000001F; cursor: auto; } 
+  .register-modal-overlay { 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: #0000001F; 
+        cursor: auto; 
+    } 
 
   @media only screen and (max-width: 800px){
-    .register-modal { position: fixed; top: 0; width: 100%; height: 100%; } 
-    .register-modal-con { position: absolute; left: 0; right: 0; margin: 0 4%; top: 31%; transform: translateY(-50%); max-width: 410px; margin: 0 auto; } 
+    .register-modal { 
+        position: fixed; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+    } 
+    .register-modal-con { 
+        position: absolute; 
+        left: 0; 
+        right: 0; 
+        margin: 0 4%; 
+        top: 31%; 
+        transform: translateY(-50%); 
+        max-width: 300px; 
+        margin: 0 auto;
+    } 
  
-    .register-modal-con form { display: flex; flex-direction: column; } 
-  }
+    .register-modal-con form input{ 
+        display: flex; 
+        flex-direction: column;
+        width:100%;
+        padding: 10px;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+         
+    } 
+    }
+    @media only screen and (max-width: 600px){
+    .register-modal { 
+        position: fixed; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+    } 
+    .register-modal-con { 
+        position: absolute; 
+        left: 0; 
+        right: 0; 
+        margin: 0 4%; 
+        top: 31%; 
+        transform: translateY(-50%); 
+        max-width: 200px; 
+        margin: 0 auto;
+        margin-top: 30px; 
+    } 
+
+    .register-modal-con form input{ 
+        display: flex; 
+        flex-direction: column; 
+        width:100%;
+        padding: 10px;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+    }
 </style>

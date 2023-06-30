@@ -87,9 +87,9 @@
     
     #header{position: relative;}
     .header-con{position: relative;padding: 10px 10px;border: 0px solid yellow;background-color: aliceblue;}
-    .main-logo{float: left; border:px solid green; height:80px;}
+    .main-logo{float: left; height:80px;}
     .main-logo img{width: 80px; height: auto;}
-    .main-nav{float: right;border:px solid blue; margin-top:17px;}
+    .main-nav{float: right; margin-top:17px;}
     .main-nav ul{display: flex;column-gap: 10px;padding-top: 0px;}
     .main-nav ul li { position: relative; cursor: pointer;} 
     ul.user-functions a {

@@ -8,7 +8,7 @@
                     <input v-model="formData.password" placeholder="Password" type="password" />
                     <button @click="submitForm" class="btn-input btn-input--login">Login</button>                
                     <div v-if="is_loading" style="color:#1a1a1a">
-                        <img src="~/assets/images/loader.gif" />
+                        <img src="~/assets/images/loader.gif" id="loader" />
                         <!-- <LoaderCardShuffle /> -->
                     </div>                
                     <p v-else class="error_message">{{ login_message }}</p>
@@ -60,15 +60,15 @@
     height: auto;
     width: auto;
     }
-    input[type=text], input[type=password] {
+    input {
         width: 200px;
         padding: 12px 20px;
         margin: 8px 0;
         box-sizing: border-box;
         border: 1px solid #c8371a;
-        border-radius: 4px;
+        border-radius: 5px;
     }
-    input[type=text]:focus, input[type=password]:focus{
+    input:focus{
         outline: 2px solid #ebb948;
     }
     .btn-input {
@@ -122,12 +122,69 @@
         color: #c8371a;
         cursor: pointer;
     }
+    #loader{
+        width:20%;
+        padding-top: 10px;
+    }
   .login-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0000001F; cursor: auto; } 
 
   @media only screen and (max-width: 800px){
-    .login-modal { position: fixed; top: 0; width: 100%; height: 100%; } 
-    .login-modal-con { position: absolute; left: 0; right: 0; margin: 0 4%; top: 31%; transform: translateY(-50%); max-width: 410px; margin: 0 auto; } 
- 
-    .login-modal-con form { display: flex; flex-direction: column; } 
+    .login-modal { 
+        position: fixed; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+    } 
+    .login-modal-con { 
+        position: absolute; 
+        left: 0; 
+        right: 0; 
+        margin: 0 4%; 
+        top: 31%; 
+        transform: translateY(-50%); 
+        max-width: 300px; 
+        margin: 0 auto; 
+    } 
+
+    .login-modal-con form input{ 
+        display: flex; 
+        flex-direction: column; 
+        width:100%;
+        padding: 10px;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+    .btn-input {
+        width: 100%;
+    } 
+  }
+  @media only screen and (max-width: 600px){
+    .login-modal { 
+        position: fixed; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+    } 
+    .login-modal-con { 
+        position: absolute; 
+        left: 0; 
+        right: 0; 
+        margin: 0 4%; 
+        top: 31%; 
+        transform: translateY(-50%); 
+        max-width: 200px; 
+        margin: 0 auto; 
+    } 
+
+    .login-modal-con form input{ 
+        display: flex; 
+        flex-direction: column; 
+        width:100%;
+        padding: 10px;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+    }
   }
 </style>

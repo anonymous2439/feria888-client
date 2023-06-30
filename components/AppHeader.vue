@@ -84,11 +84,12 @@
 </script>
 
 <style scoped>
+    
     #header{position: relative;}
-    .header-con{position: relative;padding: 10px 10px;border: 0px solid white;background-color: aliceblue;}
-    .main-logo{float: left; border:0px solid green; height:80px;}
+    .header-con{position: relative;padding: 10px 10px;border: 0px solid yellow;background-color: aliceblue;}
+    .main-logo{float: left; border:px solid green; height:80px;}
     .main-logo img{width: 80px; height: auto;}
-    .main-nav{float: right;border:0px solid blue; margin-top:17px;}
+    .main-nav{float: right;border:px solid blue; margin-top:17px;}
     .main-nav ul{display: flex;column-gap: 10px;padding-top: 0px;}
     .main-nav ul li { position: relative; cursor: pointer;} 
     ul.user-functions a {
@@ -123,7 +124,7 @@
     .main-nav-mobile::before{background-color: #00000051;position: absolute;top: 0;left: 0;width: 100%;height: 100%;content: "";}
     .main-nav-mobile-con{position: absolute;background-color: #302e39;top: 0;right: 0;width: 200px;height: 100%;box-shadow: 0 0 18px -4px #e4b53679;}
     .main-nav-mobile-con ul li {margin-bottom: 5px;}
-    .nav-mobile-main-logo {float: left;width: 15%;padding: 10px 0 0 10px;}
+    .nav-mobile-main-logo {float: left;width: 25%;padding: 10px 0 0 10px;}
 
     .hamburger-menu { width: 41px; height: 2px; position: relative; z-index: 500;border-top: 2px solid #000000;border-bottom: 2px solid #000000;padding: 6px 0; cursor: pointer;display: none;float: right;top: 30px;} 
     .hamburger-menu::before{background-color: #000000;content: "";width: 100%;height: 2px;position: absolute;top: 50%;transform: translateY(-50%);left: 0;right: 0;}
@@ -132,8 +133,8 @@
 
     #img-login {
         float: none;
-        height: 15px;
-        width: 15px;
+        height: 16px;
+        width: 16px;
         padding-top: 0px;;
     }
     .flash-slide {

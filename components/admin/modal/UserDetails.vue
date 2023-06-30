@@ -7,28 +7,30 @@
             <div class="edit-section" v-if="active_section == 1">
 
                 <template v-if="user_info.user.user_type.name == 'admin'">
-                    <a @click="editProfile">Edit</a>
-                    <a v-if="is_editing_profile" @click="changePassword"> | Change Password</a>
+                    <a @click="editProfile" class="btn-input btn-input--edit">Edit</a>
+                    <a v-if="is_editing_profile" @click="changePassword" class="btn-input btn-input--change"> | Change Password</a>
                 </template>
-                
                 <ul>
                     <li>
                         Username:
                         <span v-if="is_editing_profile == false">{{ formData && formData.username }}</span>
                         <input v-else v-model="formData.username" />
                     </li>
+                    <hr>
                     <li>
-                        Email: 
+                        <b>Email:</b>&nbsp;&nbsp;
                         <span v-if="is_editing_profile == false">{{ formData && formData.email }}</span>
                         <input v-else v-model="formData.email" type="email" />
                     </li>
+                    <hr>
                     <li>
-                        Phone Number: 
+                        <b>Phone Number:</b>&nbsp;&nbsp;
                         <span v-if="is_editing_profile == false">{{ formData && formData.phone_number }}</span>
                         <input v-else v-model="formData.phone_number" />
                     </li>
+                    <hr>
                     <li>
-                        User Type:
+                        <b>User Type:</b>&nbsp;&nbsp;
                         <select :disabled="is_editing_profile == false" v-model="formData.type_id">                        
                             <option v-for="(user_type, i) in user_types" :key="i" :value="user_type.id">
                                 {{ user_type.name }}
@@ -53,24 +55,24 @@
 
                 <div class="detail_actions">
                     <template v-if="is_editing_profile">
-                        <a @click="editProfile">Cancel</a> | 
-                        <a @click="submitUserForm">Update</a>  
+                        <a @click="editProfile" class="btn-input btn-input--close">Cancel</a>
+                        <a @click="submitUserForm" class="btn-input btn-input--update">Update</a>  
                     </template>
                     <template v-else>
-                        <a @click="details_modal_is_active = false">Close</a>
+                        <a @click="details_modal_is_active = false" class="btn-input btn-input--close">Close</a>
                     </template>
                 </div>
             </div>
             <!-- end edit-section -->
 
             <div class="change-password-section" v-else>
-                <a v-if="is_editing_profile" @click="changePassword">Change Password</a>
+                <a v-if="is_editing_profile" @click="changePassword" class="btn-input btn-input--change">Change Password</a>
 
                 <input v-model="formData.current_password" placeholder="Current Password" type="password" />
                 <input v-model="formData.new_password" placeholder="New Password" type="password" />
                 <input v-model="formData.new_password_confirmation" placeholder="Confirm New Password" type="password" />
-                <button @click="active_section = 1">Cancel</button>
-                <button @click="submitChangePassword">Submit</button>
+                <button @click="active_section = 1" class="btn-input btn-input--cancel">Cancel</button>
+                <button @click="submitChangePassword" class="btn-input btn-input--submit">Submit</button>
             </div>
             
             
@@ -162,14 +164,190 @@
 </script>
 
 <style scoped>
-    .details-modal { position: absolute; right: 0; top: 100%; z-index: 500; } 
-  .details-modal-con { background: #fff; padding: 20px; border-radius: 5px;position: relative; cursor: default;} 
-  .details-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0000001F; cursor: auto; } 
-
-  @media only screen and (max-width: 800px){
-    .details-modal { position: fixed; top: 0; width: 100%; height: 100%; } 
-    .details-modal-con { position: absolute; left: 0; right: 0; margin: 0 4%; top: 31%; transform: translateY(-50%); max-width: 410px; margin: 0 auto; } 
+    .edit-section ul{
+        margin: 10px;  
+    }
+    .edit-section ul li{
+        text-align: left;
+        padding: 6px; 
+    }
+    .edit-section ul li select{
+        border: 1px solid #c8371a;
+        padding: 7px;
+        border-radius: 5px;
+        cursor: pointer; 
+    }
+    input {
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #c8371a;
+        border-radius: 5px;
+    }
+    input:focus{
+        outline: 2px solid #ebb948;
+    }
+    .btn-input {
+        border: none;
+        display: inline-block;
+        color: #fff;
+        width: 90px;
+        height: 20px;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: Helvetica;
+        text-align:center;
+        cursor: pointer;
+    }
+    .btn-input:before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: -80px;
+        height: 100px;
+        width: 70px;
+        background: rgba(255, 255, 255, .3);
+        transform: rotate(20deg);
+    }
+    .btn-input:hover:before {
+        left: 210px;
+        transition: all .7s;
+    }
+    .btn-input--edit{
+        background: #ebb948;
+    }
+    .btn-input--update{
+        background: #00e300;
+        padding-top: 13px;
+        margin-left: 15px;
+        margin-bottom: 8px;
+    }
+    .btn-input--close{
+        border: 2px solid #c8371a;
+        color: #000000;
+    }
+    .btn-input--change{
+        background: #c8371a;
+        color: #fff;
+        font-size: 12px;
+        margin-left: 15px;
+        padding-top: 7px;
+        padding-bottom: 13px;
+    }
+    .btn-input--cancel{
+        background: none;
+        color: #000000;
+        border: 1px solid #c8371a;
+        padding: 10px 0px 25px 0px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .btn-input--submit{
+        background: #ebb948;
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 0px 25px 0px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .details-modal { 
+        position: absolute; 
+        right: 15%;
+        left: 15%; 
+        top: 20%; 
+        z-index: 500; 
+    } 
+  .details-modal-con { 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 5px;
+        position: relative; 
+        cursor: default;
+    } 
+  .details-modal-overlay { 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: #0000001F; 
+        cursor: auto; 
+    }
+    @media only screen and (max-width: 1400px){
+      
+    .change-password-section{
+        margin: auto;
+        max-width: 300px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 18px -4px #000000;
+    }
+    .change-password-section input {
+        padding: 10px;
+        display: block;
+        box-sizing: border-box;
+        width: 94%;
+        margin: 10px;
+        border: 1px solid #c8371a;
+        border-radius: 5px;
+    }
+    .change-password-section input:focus{
+        outline: 2px solid #ebb948;
+    }
+    }
+    @media only screen and (max-width: 800px){
+    .details-modal { 
+        position: fixed; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+    } 
+    .details-modal-con { 
+        position: absolute;
+        top: 40%;
+        left: 0%;
+        right: 0; 
+        transform: translateY(-40%);
+        max-width: 300px;
+        margin: 0 auto; 
+    } 
  
-    .details-modal-con form { display: flex; flex-direction: column; } 
+    .details-modal-con form { 
+        display: flex; 
+        flex-direction: column; 
+    }
+    .change-password-section{
+        box-shadow: none; 
+    } 
+  }
+  @media only screen and (max-width: 600px){
+    .details-modal { 
+        position: fixed; 
+        top: 0; 
+        width: 100%; 
+        height: 100%; 
+    } 
+    .details-modal-con { 
+        position: absolute;
+        top: 40%;
+        left: -25%;
+        right: 0; 
+        transform: translateY(-40%);
+        max-width: 300px;
+        margin: 0 auto; 
+    } 
+ 
+    .details-modal-con form { 
+        display: flex; 
+        flex-direction: column; 
+    }
+    .change-password-section{
+        box-shadow: none; 
+    }
+     
   }
 </style>

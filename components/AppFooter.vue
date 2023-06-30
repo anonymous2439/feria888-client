@@ -45,7 +45,7 @@
 <style scoped>
     #app-footer { background: #00000099; position: relative; border: 0px solid; } 
     .app-footer-con { display: flex; justify-content: space-between; padding:40px 10px;border: 0px solid yellow; margin-top: 10px;} 
-    .app-footer-col ul li a { color: #fff; text-decoration: none; line-height: 100%; border: px solid red;} 
+    .app-footer-col ul li a { color: #fff; text-decoration: none; line-height: 100%;} 
     .app-footer-col ul li { margin-top: 12px; } 
     .app-footer-col ul li a:hover { text-decoration: none; padding-bottom: 3px;} 
     .footer-social { display: flex; align-items: center; column-gap: 10px; justify-content: center; border: 0px solid blue;} 

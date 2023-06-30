@@ -2,8 +2,8 @@
     <div class="header">
         <div class="header-info">
             <ul>
-                <li>Wallet: {{ user_info_cookie.user.wallets.length > 0 ? user_info_cookie.user.wallets[0].wallet_balance : 0 }}</li>
-                <li>Coins: {{ user_info_cookie.user.coins.length > 0 ? user_info_cookie.user.coins[0].coin_balance : 0 }}</li>
+                <li>Wallet: {{ user_info_cookie?.user?.wallets?.length > 0 ? user_info_cookie?.user?.wallets[0]?.wallet_balance : 0 }}</li>
+                <li>Coins: {{ user_info_cookie?.user?.coins?.length > 0 ? user_info_cookie?.user?.coins[0]?.coin_balance : 0 }}</li>
             </ul>
         </div>
         <div class="header-nav">
@@ -16,6 +16,14 @@
     const runTimeConfig = useRuntimeConfig()
     const user_info_cookie = useCookie('user_info')
     let user_info = user_info_cookie.value
+
+    const { data, refresh } = await useFetch(`${runTimeConfig.public.baseURL}/api/user/get`, { 
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer '+user_info.token,
+        },
+    })
+    user_info_cookie.value.user = data.value
 
     // methods
     async function logout(){

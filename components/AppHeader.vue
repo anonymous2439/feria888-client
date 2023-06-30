@@ -43,7 +43,7 @@
                         <li >
                             <nuxt-link to="/profile">Profile</nuxt-link>
                         </li>
-                        <li v-if="user_info.user.user_type.name == 'admin' || user_info.user.user_type.name == 'agent'">
+                        <li v-if="user_info.user.user_type.name == 'admin'">
                             <nuxt-link to="/admin">Admin Panel</nuxt-link>
                         </li>
                         <li>
@@ -61,7 +61,6 @@
 </template>
 
 <script setup>
-    import { onMounted } from 'vue';
     const runTimeConfig = useRuntimeConfig()
     const login_is_active = useState('login_is_active')
     const register_is_active = useState('register_is_active')

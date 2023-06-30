@@ -5,6 +5,8 @@
             <div class="profile-nav">
                 <a @click="editProfile">Edit</a>
                 <a @click="cpassword_is_active = true">Change Password</a>
+                <a>Cash-In</a>
+                <a>Cash-Out</a>
             </div>
             <ul>
                 <li>

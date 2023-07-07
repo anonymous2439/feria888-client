@@ -24,7 +24,6 @@
     const user_info = useCookie('user_info')
     const user_details = useState('user_details')
     const error_message = ref()
-    console.log(user_info)
 
     const search = {
         value: null,

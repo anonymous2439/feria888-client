@@ -17,7 +17,7 @@
     left: 0; 
     right: 0; 
     background-color: #302e39;
-    box-shadow: 0 0 10px 1px #000000;
+    box-shadow: 0 0 5px 1px #00000050;
     display: none;
 } 
  .footer-menu ul { 

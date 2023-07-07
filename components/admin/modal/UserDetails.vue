@@ -7,30 +7,32 @@
             <div class="edit-section" v-if="active_section == 1">
 
                 <template v-if="user_info.user.user_type.name == 'admin'">
-                    <a @click="editProfile" class="btn-input btn-input--edit">Edit</a>
-                    <a v-if="is_editing_profile" @click="changePassword" class="btn-input btn-input--change"> | Change Password</a>
+                    <a>
+                        <label class="switch">                        
+                            <input type="checkbox" @click="editProfile">
+                            <span class="slider round">EDIT</span>
+                        </label>
+                    </a>
+                    
                 </template>
                 <ul>
                     <li>
-                        Username:
+                        <b>Username :</b>&nbsp;&nbsp;
                         <span v-if="is_editing_profile == false">{{ formData && formData.username }}</span>
                         <input v-else v-model="formData.username" />
                     </li>
-                    <hr>
                     <li>
-                        <b>Email:</b>&nbsp;&nbsp;
+                        <b>Email :</b>&nbsp;&nbsp;
                         <span v-if="is_editing_profile == false">{{ formData && formData.email }}</span>
                         <input v-else v-model="formData.email" type="email" />
                     </li>
-                    <hr>
                     <li>
-                        <b>Phone Number:</b>&nbsp;&nbsp;
+                        <b>Phone Number :</b>&nbsp;&nbsp;
                         <span v-if="is_editing_profile == false">{{ formData && formData.phone_number }}</span>
                         <input v-else v-model="formData.phone_number" />
                     </li>
-                    <hr>
                     <li>
-                        <b>User Type:</b>&nbsp;&nbsp;
+                        <b>User Type :</b>&nbsp;&nbsp;
                         <select :disabled="is_editing_profile == false" v-model="formData.type_id">                        
                             <option v-for="(user_type, i) in user_types" :key="i" :value="user_type.id">
                                 {{ user_type.name }}
@@ -38,17 +40,22 @@
                         </select>
                     </li>
                     <li>
-                        Wallet Balance:
+                        <b>Wallet Balance :</b>&nbsp;&nbsp;
                         {{ user_to_view.wallets.length ? user_to_view.wallets[0].wallet_balance : 0 }}
                     </li>
                     <li>
-                        Coin Balance:
+                        <b>Coin Balance :</b>&nbsp;&nbsp;
                         {{ user_to_view.coins.length ? user_to_view.coins[0].coin_balance : 0 }}
                     </li>
+                  
                     <li v-if="user_info.user.user_type.name == 'admin'">
-                        <button @click="load_wallet_is_clicked = !load_wallet_is_clicked">Load Wallet</button>
+                        <b>Load Wallet</b><br />                        
+                        <label class="switch">                        
+                            <input type="checkbox" @click="load_wallet_is_clicked = !load_wallet_is_clicked">
+                            <span class="slider round"></span>
+                        </label>
                         <form v-if="load_wallet_is_clicked" @submit.prevent="submitLoadWallet(user_to_view.id)">
-                            <input v-model="wallet_amount" type="number" placeholder="Amount" /><button type="submit">Submit</button>
+                            <input v-model="wallet_amount" type="number" placeholder="Amount" /><button type="submit" class="btn-input btn-input--load">Load Coins</button>
                         </form>
                     </li>
                 </ul>
@@ -56,7 +63,8 @@
                 <div class="detail_actions">
                     <template v-if="is_editing_profile">
                         <a @click="editProfile" class="btn-input btn-input--close">Cancel</a>
-                        <a @click="submitUserForm" class="btn-input btn-input--update">Update</a>  
+                        <a @click="submitUserForm" class="btn-input btn-input--update">Update</a>
+                        <a v-if="is_editing_profile" @click="changePassword" class="btn-input btn-input--change">Change Password</a>  
                     </template>
                     <template v-else>
                         <a @click="details_modal_is_active = false" class="btn-input btn-input--close">Close</a>
@@ -66,7 +74,7 @@
             <!-- end edit-section -->
 
             <div class="change-password-section" v-else>
-                <a v-if="is_editing_profile" @click="changePassword" class="btn-input btn-input--change">Change Password</a>
+                <h2>Change Password</h2>
 
                 <input v-model="formData.current_password" placeholder="Current Password" type="password" />
                 <input v-model="formData.new_password" placeholder="New Password" type="password" />
@@ -165,100 +173,37 @@
 
 <style scoped>
     .edit-section ul{
-        margin: 10px;  
+        margin: 0px;  
     }
     .edit-section ul li{
         text-align: left;
-        padding: 6px; 
+        padding: 10px 0px;
+        border-bottom: 1px solid gray; 
+        border-width: 2px;
+    }
+    .edit-section ul li:nth-child(7){
+        border-bottom:none;
     }
     .edit-section ul li select{
-        border: 1px solid #c8371a;
+        border: 1px solid gray;
         padding: 7px;
         border-radius: 5px;
-        cursor: pointer; 
-    }
-    input {
-        padding: 10px;
-        box-sizing: border-box;
-        border: 1px solid #c8371a;
-        border-radius: 5px;
-    }
-    input:focus{
-        outline: 2px solid #ebb948;
-    }
-    .btn-input {
-        border: none;
-        display: inline-block;
-        color: #fff;
-        width: 90px;
-        height: 20px;
-        padding: 10px;
-        margin: 8px 0;
-        border-radius: 5px;
-        position: relative;
-        overflow: hidden;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Helvetica;
-        text-align:center;
-        cursor: pointer;
-    }
-    .btn-input:before {
-        content: "";
-        position: absolute;
-        top: -30px;
-        left: -80px;
-        height: 100px;
-        width: 70px;
-        background: rgba(255, 255, 255, .3);
-        transform: rotate(20deg);
-    }
-    .btn-input:hover:before {
-        left: 210px;
-        transition: all .7s;
-    }
-    .btn-input--edit{
-        background: #ebb948;
-    }
-    .btn-input--update{
-        background: #00e300;
-        padding-top: 13px;
-        margin-left: 15px;
-        margin-bottom: 8px;
-    }
-    .btn-input--close{
-        border: 2px solid #c8371a;
-        color: #000000;
-    }
-    .btn-input--change{
-        background: #c8371a;
-        color: #fff;
-        font-size: 12px;
-        margin-left: 15px;
-        padding-top: 7px;
-        padding-bottom: 13px;
-    }
-    .btn-input--cancel{
         background: none;
-        color: #000000;
+    } 
+    .edit-section ul li select:focus{
         border: 1px solid #c8371a;
-        padding: 10px 0px 25px 0px;
-        margin-top: 10px;
-        margin-left: 10px;
+        outline: 2px solid #ebb948;
+        cursor: pointer;
+        background: none;
     }
-    .btn-input--submit{
-        background: #ebb948;
-        color: #fff;
-        font-size: 12px;
-        padding: 10px 0px 25px 0px;
-        margin-top: 10px;
-        margin-left: 10px;
+    .edit-section ul li form input{
+        margin: 10px 10px 0px 0px;
     }
     .details-modal { 
         position: absolute; 
         right: 15%;
         left: 15%; 
-        top: 20%; 
+        top: 10%; 
         z-index: 500; 
     } 
   .details-modal-con { 

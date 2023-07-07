@@ -43,7 +43,7 @@
 </template>
 
 <style scoped>
-    #app-footer { background: #00000099; position: relative; border: 0px solid; } 
+    #app-footer { background: gray; position: relative;  } 
     .app-footer-con { display: flex; justify-content: space-between; padding:40px 10px;border: 0px solid yellow; margin-top: 10px;} 
     .app-footer-col ul li a { color: #fff; text-decoration: none; line-height: 100%;} 
     .app-footer-col ul li { margin-top: 12px; } 

@@ -5,7 +5,7 @@
             <div class="content">
                 <div class="">
                     <div class="">
-                        <a @click="closeModal" class="close-btn"><img src="/images/closebutton.png" /></a>
+                        <a @click="closeModal"><img src="/images/closebutton.png" /></a>
                     </div>
                     <div class="header-modal">
                         <h2><slot /></h2>
@@ -15,8 +15,8 @@
                     <img :src="props.icon" />
                 </div>
                 <div class="footer">
-                    <a :href="props.link" target="_blank" class="modal-btn modal-btn--practice">Demo</a>
-                    <a :href="props.link" target="_blank" class="modal-btn modal-btn--play-for-real">Play for Real</a>                    
+                    <a :href="props.link" target="_blank" class="btn-input btn-input--demo">Demo</a>
+                    <a :href="props.link" target="_blank" class="btn-input btn-input--play-for-real">Play for Real</a>                    
                                     
                 </div>
             </div>
@@ -44,69 +44,33 @@
     .content {border:0px solid green;position: absolute;top: 50%;left: 0;right: 0;max-width: 500px;margin: 0 auto;padding: 15px 15px;background: #fff;color: #1a1a1a;border-radius: 5px;transform: translateY(-55%);}
     .content div div a img{
         height: 30px;
+        float: right;
     }
     .content div div a img:hover{
         scale: 1.1;
+        cursor: pointer;
     }
     .header-modal{
         border: 0px solid yellow;
         margin-top: 0px;
         padding: 15px;
     }
-    .close-btn{
-        float: right;
-        padding-top: 5px;
-        padding-right: 5px;
-        font-weight: bolder;
-        cursor: pointer;
-        font-size: 20px;
+    
+    .body {
+        padding: 15px 0;
     }
-    .close-btn:hover{
-        font-weight: bolder;
-        cursor: pointer;
-        color: #c8371a;
+    .footer {
+        display: flex;
+        border-top: 0px solid #000;
+        padding: 15px 0 15px;
+        column-gap: 12px;
+        row-gap: 12px;
     }
-    .body {padding: 15px 0;}
-    .footer {display: flex;border-top: 0px solid #000;padding: 15px 0 15px;column-gap: 12px;row-gap: 12px;}
-    .footer a {max-width: 140px;width: 100%;}
+    .footer a {
+        max-width: 140px;
+        width: 100%;
+        margin: 0 auto;
+    }
 
-    .modal-btn {
-        border: none;
-        display: inline-block;
-        color: #fff;
-        margin:auto;
-        padding: 20px 0px 0px;
-        height: 40px;
-        border-radius: 5px;
-        position: relative;
-        overflow: hidden;
-        text-decoration: none;
-        text-transform: uppercase;
-        text-align:center;
-        cursor: pointer;
-        font-size: 15px;
-    }
-    .modal-btn:before {
-        content: "";
-        position: absolute;
-        top: -30px;
-        left: -80px;
-        height: 110px;
-        width: 70px;
-        background: rgba(255, 255, 255, .3);
-        transform: rotate(20deg);
-    }
-    .modal-btn:hover:before {
-        left: 190px;
-        transition: all .7s;
-    }
-    .modal-btn--practice{
-        background: #ebb948;
-    }
-    .modal-btn--play-for-real{
-        background: #c8371a;
-    }
-    .modal-btn--cancel{
-        background: red;
-    }
+    
 </style>

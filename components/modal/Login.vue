@@ -71,43 +71,7 @@
     input:focus{
         outline: 2px solid #ebb948;
     }
-    .btn-input {
-        border: none;
-        display: inline-block;
-        color: #fff;
-        margin-top: 8px;
-        padding-top: 13px 0px;
-        width: 200px;
-        height: 40px;
-        border-radius: 5px;
-        position: relative;
-        overflow: hidden;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Helvetica;
-        text-align:center;
-        cursor: pointer;
-    }
-    .btn-input:before {
-        content: "";
-        position: absolute;
-        top: -30px;
-        left: -80px;
-        height: 100px;
-        width: 70px;
-        background: rgba(255, 255, 255, .3);
-        transform: rotate(20deg);
-    }
-    .btn-input:hover:before {
-        left: 210px;
-        transition: all .7s;
-    }
-    .btn-input--login{
-        background: #ebb948;
-    }
-    .btn-input--register{
-        background: #c8371a;
-    }
+    
     .modal-footer{
         color: #302e39;
         width: 100%;

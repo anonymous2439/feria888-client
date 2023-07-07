@@ -3,12 +3,15 @@
     <div id="header">
         <div class="wrapper">
             <div class="header-con">
+                
                 <div class="header-logo">
                     <div class="main-logo">
                         <nuxt-link to="/"><img src="~/assets/images/main_logo.png" /></nuxt-link>
                     </div>           
                 </div>
-                
+                <div class="banner-header">
+
+                </div>
                 <div class="main-nav-mobile" v-show="nav_is_active">
                     <div class="main-nav-mobile-con">
                         <div class="nav-mobile-header">
@@ -84,20 +87,31 @@
 </script>
 
 <style scoped>
-    
+    .banner-header{
+        display: inline-block;
+        border: 1px solid white;
+        
+        height: 80px;
+        width: 270px;
+        margin-left: 10px;
+    }
     #header{position: relative;}
-    .header-con{position: relative;padding: 10px 10px;border: 0px solid yellow;background-color: aliceblue;}
+    .header-con{
+        position: relative;
+        padding: 10px 10px;
+        background-color: aliceblue;     
+    }
     .main-logo{float: left; height:80px;}
     .main-logo img{width: 80px; height: auto;}
     .main-nav{float: right; margin-top:17px;}
     .main-nav ul{display: flex;column-gap: 10px;padding-top: 0px;}
     .main-nav ul li { position: relative; cursor: pointer;} 
     ul.user-functions a {
-        margin: top 3px;
+        margin: 6px;
         color: #302e39;
         font-size: 18px;
+        font-weight: bolder;
         text-decoration: none; 
-        border: 0px solid green;
     }
     ul.user-functions li a:hover::before { 
         animation: forwards; 
@@ -116,8 +130,6 @@
         right: 0; 
         margin: 0 auto; 
     } 
- 
-
 
     .nav-mobile-header {border-bottom: 1px solid #ffffff56;padding-bottom: 10px;}
     .main-nav-mobile{z-index:1000;position: fixed;width: 100%;height: 100vh;top: 0;left: 0;transition: .6s;}
@@ -142,7 +154,7 @@
         display: inline-block;
         color: #fff;
         margin-top: 0px;
-        padding: 13px 0px 0px;
+        padding: 11px 0px 0px 0px;
         width: 110px;
         height: 30px;
         border-radius: 5px;
@@ -174,13 +186,32 @@
     .flash-slide--register{
         background: #c8371a;
     }
-
+    @media only screen and (max-width: 1400px) {
+   
+    }
     @media only screen and (max-width: 1000px) {
-
+        .banner-header{
+            border: 1px solid blue;
+            min-width: 600px;            
+        }
     }
     @media only screen and (max-width: 800px) {
         .hamburger-menu{display: block;}
         .main-nav { float: none; clear: both; } 
         .main-nav ul { justify-content: center; } 
+        .banner-header{
+            border: 1px solid green;
+            
+            min-width: 270px;
+        }
+        
     }
+    @media only screen and (max-width: 600px) {
+        .banner-header{
+            content: url('/images/bannertry_300.png');
+            border: 1px solid pink;
+            max-width: 270px;
+        }
+    }
+   
 </style>

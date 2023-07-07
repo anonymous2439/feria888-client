@@ -14,6 +14,7 @@
                 <input v-model="formData.password_confirmation" placeholder="Confirm Password" type="password" required />
                 <input v-model="formData.phone_number" placeholder="Phone Number" type="text" required />
                 <button @click="submitForm" class="btn-input btn-input--add">Add</button>
+                <button @click="add_modal_is_active = false" class="btn-input btn-input--cancel">Cancel</button>
                 
         </div>
     </div>
@@ -21,7 +22,7 @@
 
 <script setup>
     const runTimeConfig = useRuntimeConfig()
-    const add_modal_is_active = useState('add_modal_is_active');    
+    const add_modal_is_active = useState('add_modal_is_active');   
     const user_info = useCookie('user_info')
     const {value:user_types} = useState('user_types')
     const content_is_loading = useState('content_is_loading', () => false)
@@ -97,40 +98,7 @@
     .add-modal-con input:focus{
         outline: 2px solid #ebb948;
     }
-    .btn-input {
-        border: none;
-        display: inline-block;
-        color: #fff;
-        margin-top: 8px;
-        padding-top: 13px 0px;
-        width: 90px;
-        height: 40px;
-        border-radius: 5px;
-        position: relative;
-        overflow: hidden;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Helvetica;
-        text-align:center;
-        cursor: pointer;
-    }
-    .btn-input:before {
-        content: "";
-        position: absolute;
-        top: -30px;
-        left: -80px;
-        height: 100px;
-        width: 70px;
-        background: rgba(255, 255, 255, .3);
-        transform: rotate(20deg);
-    }
-    .btn-input:hover:before {
-        left: 210px;
-        transition: all .7s;
-    }
-    .btn-input--add{
-        background: #00e300;
-    }
+    
     @media only screen and (max-width: 1000px){
         .add-modal { 
             position: fixed; 

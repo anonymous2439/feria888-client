@@ -135,41 +135,6 @@ const paginatedData = computed(() => {
     .table-nav a img:hover{
         scale: 1.1;
     }    
-    .display thead tr{
-        background: #302e39;
-        color: #fff;
-    }
-    .display thead tr th:hover{
-        color: #ebb948;
-    }
-    .display tbody{
-        color: #000000;
-    }
-    .display tbody tr:hover{
-        background: #ebb948;
-    }
-    .display tr:nth-child(even) {
-        background-color: #dad9d9;
-    }
-    .display tbody tr td a:nth-child(1){
-        font-weight: bolder;
-        cursor: pointer;
-        color: green;
-        border-right: 1px solid black;
-        padding-right: 5px;
-    }
-    .display tbody tr td a:nth-child(2){
-        font-weight: bolder;
-        cursor: pointer;
-        color: red;
-    }
-    .display tbody tr td a:hover{
-        border-bottom: 2px solid green;
-        padding-bottom: 1px;
-    }
-    .display tbody tr td a:hover:nth-child(2){
-        border-bottom: 2px solid red;
-        padding-bottom: 1px;
-    }
+    
 
 </style>

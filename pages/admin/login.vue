@@ -4,7 +4,7 @@
         <form @submit.prevent="submitForm">
             <input v-model="formData.username" placeholder="Username" type="text" />
             <input v-model="formData.password" placeholder="Password" type="password" />
-            <button @click="submitForm" class="btn-input btn-input--login">Login</button>
+            <button @click="submitForm" class="btn-input btn-input--admin-login">Login</button>
             <p class="login-message">{{ login_message }}</p>
         </form>
     </div>
@@ -66,38 +66,5 @@
         outline: 2px solid #ebb948;
     }
     .login-message {color: red; text-align: center; margin-top: 15px;}
-    .btn-input {
-        border: none;
-        color: #fff;
-        margin: auto;
-        margin-top: 15px;
-        padding-top: 13px 0px;
-        width: 300px;
-        height: 40px;
-        border-radius: 5px;
-        position: relative;
-        overflow: hidden;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Helvetica;
-        text-align:center;
-        cursor: pointer;
-    }
-    .btn-input:before {
-        content: "";
-        position: absolute;
-        top: -30px;
-        left: -80px;
-        height: 100px;
-        width: 70px;
-        background: rgba(255, 255, 255, .3);
-        transform: rotate(20deg);
-    }
-    .btn-input:hover:before {
-        left: 310px;
-        transition: all .7s;
-    }
-    .btn-input--login{
-        background: #ebb948;
-    }
+    
 </style>

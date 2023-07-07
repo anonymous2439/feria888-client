@@ -7,7 +7,7 @@
                 <img :src="icon"/>
                 <template v-if="user_info">
                     <div class="game-app-links">
-                        <a @click="playClick" class="btn-primary">Play</a>
+                        <a @click="playClick" class="btn-input btn-input--submit">Play</a>
                     </div>
                     <div class="link-mobile" @click="playClick"></div>
                 </template>

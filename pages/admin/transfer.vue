@@ -2,15 +2,15 @@
     <h2 class="page-title">Transfer</h2>
     <form @submit.prevent="searchUser">
         <input v-model="search.value" placeholder="ID / Username" />
-        <button type="submit">Search</button>
+        <button class="btn-input btn-input--search" type="submit">Search</button>
     </form>
     <div class="user-details">
-        <p>ID: <input v-model="user_form.id" disabled /></p>
-        <p>Username: <input :value=" user_details?.username || '' " disabled /></p>
-        <p>Coin balance: <input :value="user_details?.coins?.[0]?.coin_balance || 0 " disabled /></p>
+        <p><input v-model="user_form.id" disabled />: ID</p>
+        <p> <input :value=" user_details?.username || '' " disabled />: Username</p>
+        <p> <input :value="user_details?.coins?.[0]?.coin_balance || 0 " disabled />: Coin balance</p>
         <form @submit.prevent="loadCoins">
             <input v-model="user_form.amount" placeholder="Amount" />
-            <button>Load Coins</button>
+            <button class="btn-input btn-input--load">Load Coins</button>
         </form>
         <p class="error-message">{{ error_message }}</p>
     </div>
@@ -99,4 +99,18 @@
         }
     }
 </script>
+<style scoped>
+    input {
+        width: 200px;
+        padding: 10px;
+        margin: 8px 8px;
+        box-sizing: border-box;
+        border: 1px solid #c8371a;
+        border-radius: 4px;
+    }
+    input:focus{
+        outline: 2px solid #ebb948;
+    }
+    
+</style>
 

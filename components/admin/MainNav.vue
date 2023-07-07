@@ -2,7 +2,7 @@
     <div class="main-nav">
         <ul>
             <li><img src="~/assets/images/main_logo.png" /></li> 
-            <hr>     
+            <br />    
             <li><NuxtLink to="/" exact-active-class="active">Website</NuxtLink></li>
             <li><NuxtLink to="/admin" exact-active-class="active">Dashboard</NuxtLink></li>           
             <li v-if="user_info.user.user_type.name == 'admin'"><NuxtLink to="/admin/users" exact-active-class="active">Users</NuxtLink></li>

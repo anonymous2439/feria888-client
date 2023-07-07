@@ -6,7 +6,9 @@
                 <input v-model="formData.current_password" placeholder="Current Password" type="password" />
                 <input v-model="formData.new_password" placeholder="New Password" type="password" />
                 <input v-model="formData.new_password_confirmation" placeholder="Confirm New Password" type="password" />
+                <button @click="cpassword_is_active = false" class="btn-input btn-input--cancel">Cancel</button>
                 <button @click="submitForm" class="btn-input btn-input--submit">Submit</button>
+                
 
         </div>
     </div>
@@ -34,6 +36,7 @@
         user_info.value = response.value
         window.location.reload(true)
     }
+    
 </script>
 
 <style scoped>
@@ -54,9 +57,7 @@
         cursor: default;
     }
     .cpassword-modal-con  h2{ 
-        color: #000000;
-        margin-left: 10px; 
-        
+        color: #000000;        
     } 
     .cpassword-modal-overlay { 
         position: fixed; 
@@ -71,51 +72,15 @@
         padding: 10px;
         display: block;
         box-sizing: border-box;
-        width: 94%;
-        margin: 10px;
+        width: 100%;
+        margin: 10px 0px;
         border: 1px solid #c8371a;
         border-radius: 5px;
     }
     .cpassword-modal-con input:focus{
         outline: 2px solid #ebb948;
     }
-    .btn-input {
-        border: none;
-        display: inline-block;
-        color: #fff;
-        width: 90px;
-        height: 20px;
-        padding: 10px;
-        margin: 8px 0;
-        border-radius: 5px;
-        position: relative;
-        overflow: hidden;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Helvetica;
-        text-align:center;
-        cursor: pointer;
-    }
-    .btn-input:before {
-        content: "";
-        position: absolute;
-        top: -30px;
-        left: -80px;
-        height: 100px;
-        width: 70px;
-        background: rgba(255, 255, 255, .3);
-        transform: rotate(20deg);
-    }
-    .btn-input:hover:before {
-        left: 210px;
-        transition: all .7s;
-    }
-    .btn-input--submit{
-        background: #00e300;
-        margin-left: 10px;
-        margin-top: 20px;
-        padding: 15px 0px 27px 0px;
-    }
+    
     
   @media only screen and (max-width: 800px){
     .cpassword-modal { 

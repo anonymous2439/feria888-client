@@ -8,11 +8,23 @@
             </div>
             <ul>
                 <li>
-                    <b>Coin Balance:</b>&nbsp;&nbsp; <span>{{ profile_form.coins }}</span>
+                    <b>Coin Balance: </b><span>{{ profile_form.coins }}</span>
                 </li>
                 <li>
-                    <b>Wallet Ballance:</b>
+                    <b>Wallet Ballance: </b>
                     <span>{{ user_info?.user?.wallets?.[0]?.wallet_balance || 0 }}</span>
+                </li>
+                <li>
+                    <b>Link: </b>
+                    <template v-if="editting_link">
+                        <input :href="agent_info?.link || 'javascript:;'" target="_blank" :value="agent_info?.link || 'Link not set'"> -
+                        <a href="javascript:;" @click="editting_link = false">Cancel</a> | 
+                        <a href="javascript:;">Save</a>
+                    </template>
+                    <template v-else>
+                        <a :href="agent_info?.link || 'javascript:;'" target="_blank">{{ agent_info?.link || 'Link not set' }}</a> -
+                        <a href="javascript:;" @click="editting_link = true">Edit</a>
+                    </template>
                 </li>                
             </ul>
             <div class="agent-panel">
@@ -41,13 +53,11 @@
 <script setup>
     const runTimeConfig = useRuntimeConfig()
     const user_info = useCookie('user_info').value
-    const is_editing_profile = useState('is_editing_profile', () => false)
     const profile_form = useState('profile_form', () => {})
     const user_search = useState('user_search')
     const error_message = ref()
     const agent_info = ref()
-    const agents = ref()
-    const show_agents = ref(false)
+    const editting_link = ref(false)
 
     profile_form.value = {
         email: user_info.user.email,
@@ -65,10 +75,18 @@
         amount: null,
     }
 
-    // transfer functionalities
-    function isAgent() {
-        return user_info?.user?.user_type?.name == 'agent' ? true : false
+    // get agent info
+    const {data:user_data} = await useFetch(`${runTimeConfig.public.baseURL}/api/agent/info`, {
+        method: 'GET',            
+        headers: {
+            Authorization: 'Bearer '+user_info.token,
+        },
+    });
+    if(user_data) {
+        agent_info.value = user_data
+        console.log(agent_info)
     }
+    
 
     async function searchUser() {
         const {data:user_data, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/search/${search.value}`, {
@@ -134,20 +152,19 @@
     }
 
     // submit load wallet
-    if(isAgent()) {
-        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/agent/info`, {
-            method: 'GET',
-            headers: {
-                Authorization: 'Bearer '+user_info.token,
-            },
-        });
-        if(!response) {
-            console.log("An error occurred")
-        }
-        else{
-            agent_info.value = response.value
-        }
+    const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/agent/info`, {
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer '+user_info.token,
+        },
+    });
+    if(!response) {
+        console.log("An error occurred")
     }
+    else{
+        agent_info.value = response.value
+    }
+    
 
     // change agent status
     async function changeAgentStatus() {
@@ -161,7 +178,6 @@
             agent_info.value = response.value.agent
         }
     }
-
 </script>
 <style scoped>
     .profile-page {color: #000;}

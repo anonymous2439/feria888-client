@@ -1,6 +1,6 @@
 <template>
     <div class="agents-page">
-        <h2 class="page-title">Users</h2>
+        <h2 class="page-title">Agents</h2>
         <div class="table-nav">
             <a @click="() => add_modal_is_active = !add_modal_is_active"><img src="/images/add.png" /></a>
         </div>

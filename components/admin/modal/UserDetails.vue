@@ -6,15 +6,13 @@
             
             <div class="edit-section" v-if="active_section == 1">
 
-                <template v-if="user_info.user.user_type.name == 'admin'">
-                    <a>
-                        <label class="switch">                        
-                            <input type="checkbox" @click="editProfile">
-                            <span class="slider round">EDIT</span>
-                        </label>
-                    </a>
-                    
-                </template>
+                <a>
+                    <label class="switch">                        
+                        <input type="checkbox" @click="editProfile">
+                        <span class="slider round">EDIT</span>
+                    </label>
+                </a>
+
                 <ul>
                     <li>
                         <b>Username :</b>&nbsp;&nbsp;
@@ -48,7 +46,7 @@
                         {{ user_to_view.coins.length ? user_to_view.coins[0].coin_balance : 0 }}
                     </li>
                   
-                    <li v-if="user_info.user.user_type.name == 'admin'">
+                    <li>
                         <b>Load Wallet</b><br />                        
                         <label class="switch">                        
                             <input type="checkbox" @click="load_wallet_is_clicked = !load_wallet_is_clicked">

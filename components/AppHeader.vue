@@ -10,7 +10,7 @@
                     </div>           
                 </div>
                 <div class="banner-header">
-
+                    <span></span>
                 </div>
                 <div class="main-nav-mobile" v-show="nav_is_active">
                     <div class="main-nav-mobile-con">
@@ -46,7 +46,10 @@
                         <li >
                             <nuxt-link to="/profile">Profile</nuxt-link>
                         </li>
-                        <li v-if="user_info.user.user_type.name == 'admin'">
+                        <li v-if="user_info.user.user_type.name == 'agent'">
+                            <nuxt-link to="/agent">Agent Panel</nuxt-link>
+                        </li>
+                        <li v-else-if="user_info.user.user_type.name == 'admin' || user_info.user.user_type.name == 'root'">
                             <nuxt-link to="/admin">Admin Panel</nuxt-link>
                         </li>
                         <li>

@@ -17,7 +17,7 @@
     const cookie = useCookie('user_info')
     if(!cookie.value)
         window.location.replace('/admin/login')
-    else if(cookie.value?.user?.user_type?.name != 'admin')
+    else if(cookie.value?.user?.user_type?.name != 'admin' && cookie.value?.user?.user_type?.name != 'root')
         window.location.replace('/')
     const content_is_loading = useState('content_is_loading', () => false)
 </script>

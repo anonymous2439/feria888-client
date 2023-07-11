@@ -11,15 +11,8 @@
                     </label>
                 </a>
                 <a @click="cpassword_is_active = true" class="btn-input btn-input--change">Change Password</a>
-                <template v-if="!isAgent() && !isAdmin()">
-                    <a>Cash-In / Cash-Out</a>
-                </template>
-                <template v-if="isAgent()">
-                    <a @click="getOnlineAgents">{{ agent_info.status }}</a>
-                    <ul v-if="show_agents">
-                        <li>test</li>
-                    </ul>
-                </template>
+                <a href="javascript:;" @click="getOnlineAgents">Cash-In</a>
+                <a href="javascript:;">Cash-Out</a>
             </div>
             <ul>
                 <li>
@@ -34,35 +27,16 @@
                 </li>
                 <li>
                     <b>Coin Balance:</b>&nbsp;&nbsp; <span>{{ profile_form.coins }}</span>
-                </li>
-                <!-- agent profile -->
-                <template v-if="isAgent()">
-                    <li>
-                        <b>Wallet Ballance:</b>
-                        <span>{{ user_info?.user?.wallets?.[0]?.wallet_balance || 0 }}</span>
-                    </li>
-                </template>
-                <!-- end agent profile -->                
+                </li>              
             </ul>
             <button v-if="is_editing_profile" @click="submitEditForm" class="btn-input btn-input--submit">Submit</button>
-            <div v-if="isAgent()" class="agent-panel">
-                <!-- transfer -->
-                <h2 class="page-title">Transfer</h2>
-                <form @submit.prevent="searchUser">
-                    <input v-model="search.value" placeholder="ID / Username" />
-                    <button type="submit">Search</button>
-                </form>
-                <div class="user-details">
-                    <p>ID: <input v-model="user_form.id" disabled /></p>
-                    <p>Username: <input :value=" user_search?.username || '' " disabled /></p>
-                    <p>Coin balance: <input :value="user_search?.coins?.[0]?.coin_balance || 0 " disabled /></p>
-                    <form @submit.prevent="loadCoins">
-                        <input v-model="user_form.amount" placeholder="Amount" />
-                        <button>Load Coins</button>
-                    </form>
-                    <p class="error-message">{{ error_message }}</p>
-                </div>
-                <!-- end transfer -->
+
+            <div v-if="show_agents" class="online-agents">
+                <h2>Available Agents:</h2>
+                <a href="javascript:;" @click="getOnlineAgents">Refresh</a>
+                <ul>
+                    <li v-for="(agent, i) in agents" :key="i">{{ agent.user.username }} - <a :href="agent.link" target="_blank">{{ agent.link || 'link not set' }} </a></li>
+                </ul>
             </div>
         </div>
         <ModalChangePassword v-if="cpassword_is_active" />
@@ -77,7 +51,6 @@
     const profile_form = useState('profile_form', () => {})
     const user_search = useState('user_search')
     const error_message = ref()
-    const agent_info = ref()
     const agents = ref()
     const show_agents = ref(false)
 
@@ -102,26 +75,21 @@
     }    
 
     async function submitEditForm(){
-        const user_info = useCookie('user_info')
         const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/update`, {
             method: 'POST',
             headers: {
                 Authorization: 'Bearer '+user_info.token,
             },
-            body: JSON.stringify(profile_form.value)
-            
+            body: JSON.stringify(profile_form.value)            
         });
-        window.location.reload(true)
+        if(response){
+            console.log(user_info)
+            console.log(response.value)
+            user_info.user = response.value.user
+        }
+        // window.location.reload(true)
     }
 
-    // transfer functionalities
-    function isAgent() {
-        return user_info?.user?.user_type?.name == 'agent' ? true : false
-    }
-
-    function isAdmin() {
-        return user_info?.user?.user_type?.name == 'admin' ? true : false
-    }
 
     async function searchUser() {
         const {data:user_data, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/search/${search.value}`, {
@@ -142,82 +110,20 @@
             console.log('An error occurred')
     }
 
-    async function loadCoins() {
-        const wallet_response = await submitLoadWallet(user_form.amount)
-        if(wallet_response.success > 0){
-            const {data:user_data, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/coins/load`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    user_id: user_form.id,
-                    amount: user_form.amount,
-                }),
-                headers: {
-                    Authorization: 'Bearer '+user_info.token,
-                },
-            });
-            if(user_data.value){
-                user_search.value = user_data.value
-                // window.location.reload(true)
-            }
-            else
-                console.log('An error occurred')
-        }
-        else {
-            error_message.value = wallet_response.message
-        }
-    }
-
-    // submit load wallet
-    async function submitLoadWallet(amount) {
-        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/wallet/deduct`, {
-            method: 'POST',
-            body: JSON.stringify({
-                amount: amount,
-            }),
-            headers: {
-                Authorization: 'Bearer '+user_info.token,
-            },
-        });
-        if(!response) {
-            console.log("An error occurred")
-        }
-        else{
-            return response.value
-        }
-    }
-
-    // submit load wallet
-    if(isAgent()) {
-        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/agent/info`, {
-            method: 'GET',
-            headers: {
-                Authorization: 'Bearer '+user_info.token,
-            },
-        });
-        if(!response) {
-            console.log("An error occurred")
-        }
-        else{
-            agent_info.value = response.value.agent
-        }
-    }
-
     // get all online agents
     async function getOnlineAgents() {
-        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/agent/online`, {
+        const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/agents/online`, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer '+user_info.token,
             },
         });
-        if(!response) {
-            console.log("An error occurred")
+        if(response) {
+            agents.value = response.value.agents
+            show_agents.value = true          
         }
         else{
-            agents.value = response.value.agents
-            console.log(agents)
-            show_agents.value = true
-            console.log(show_agents)
+            console.log("An error occurred")
         }
     }
 

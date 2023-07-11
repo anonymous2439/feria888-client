@@ -27,7 +27,7 @@
                         <td>{{ user.user_type.name }}</td>
                         <td>
                             (
-                            <a @click="onDetailsClick(user)">Details</a> <a v-if="user_info.user.user_type.name == 'admin'" @click="onDeleteClick(user)">Delete</a>
+                            <a @click="onDetailsClick(user)">Details</a> <a @click="onDeleteClick(user)" v-if="user.user_type.name != 'root'">Delete</a>
                             )
                         </td>
                     </tr>

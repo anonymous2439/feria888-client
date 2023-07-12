@@ -38,6 +38,31 @@
                     <li v-for="(agent, i) in agents" :key="i">{{ agent.user.username }} - <a :href="agent.link" target="_blank">{{ agent.link || 'link not set' }} </a></li>
                 </ul>
             </div>
+
+            <!-- transactions -->
+            <div class="transactions">
+                <h2>Transactions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>From</th>
+                            <th>Transaction Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(transaction, i) in transactions" :key="i">
+                            <td>{{ transaction.id }}</td>
+                            <td>{{ transaction.from_user.username }}</td>
+                            <td>{{ transaction.type }}</td>
+                            <td>{{ transaction.amount }}</td>
+                            <td>{{ transaction.formatted_date }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <ModalChangePassword v-if="cpassword_is_active" />
     </div>
@@ -72,7 +97,15 @@
 
     function editProfile(){
         is_editing_profile.value = !is_editing_profile.value
-    }    
+    }  
+    
+    const {data:transactions, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/transactions/get`, {
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer '+user_info.token,
+        },           
+    });
+    console.log(transactions)
 
     async function submitEditForm(){
         const {data:response, pending, refresh} = await useFetch(`${runTimeConfig.public.baseURL}/api/user/update`, {

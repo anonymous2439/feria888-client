@@ -1,11 +1,11 @@
 <template>
     <div class="footer-menu">
             <ul>
-                <li><NuxtLink exact-active-class="active" to="/">Home</NuxtLink></li>
-                <li><NuxtLink exact-active-class="active" to="/games">Games</NuxtLink></li>
-                <li><NuxtLink exact-active-class="active" to="/promotion">Promotion</NuxtLink></li>
-                <li><NuxtLink exact-active-class="active" to="/member">Member</NuxtLink></li>
-                <li><NuxtLink exact-active-class="active" to="/service">Service</NuxtLink></li>
+                <li><NuxtLink exact-active-class="active" to="/">HOME</NuxtLink></li>
+                <li><NuxtLink exact-active-class="active" to="/games">GAMES</NuxtLink></li>
+                <li><NuxtLink exact-active-class="active" to="/profile">PROFILE</NuxtLink></li>
+                <li><NuxtLink exact-active-class="active" to="">PANEL</NuxtLink></li>
+                <li><NuxtLink exact-active-class="active" to="">LOGOUT</NuxtLink></li>
             </ul>
         </div>
 </template>
@@ -56,21 +56,25 @@
     top: 10px;
 }
  .footer-menu ul li:nth-child(2) a::before{
-    content: url('/images/console.png');
+    content: url('/images/controller.png');
+    top: 11px;
 }
  .footer-menu ul li:nth-child(3) a::before{
-    content: url('/images/gift-box.png');
+    content: url('/images/profile.png');
 }
  .footer-menu ul li:nth-child(4) a::before{
-    content: url('/images/group.png');
+    content: url('/images/panel.png');
 }
  .footer-menu ul li:nth-child(5) a::before{
-    content: url('/images/support.png');
+    content: url('/images/power.png');
 }
 
  @media only screen and (max-width: 800px){
     .footer-menu{
         display: block;
+    }
+    .main-nav{
+        display: none;
     }
  }
 
@@ -80,6 +84,9 @@
         font-size: 13px; 
         display: block;
     } 
+    .main-nav{
+        display: none;
+    }
  }
  
 </style>

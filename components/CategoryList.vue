@@ -26,9 +26,28 @@
 <style scoped>
     /*Mobile right menu*/ 
     .main-nav-mobile ul { padding: 25px 15px; } 
-    .main-nav-mobile ul li a { color: #fff; text-decoration: none; display: block; text-align: left; border-bottom: 1px solid #fff; padding: 15px 10px; } 
-    .main-nav-mobile ul li a:hover, .main-nav-mobile ul li a.active { background: var(--primary-color); color: #000000;font-weight: bolder;} 
-    .main-nav-mobile ul li a { transition: .3s; }
+    .main-nav-mobile ul li a { 
+        color: #fff; 
+        text-decoration: none; 
+        display: block; 
+        text-align: left; 
+        border-bottom: 1px solid #fff; 
+        padding: 15px 10px; 
+    } 
+    .main-nav-mobile ul li a:hover{
+        border-left: 5px solid var(--primary-color);
+        color: #fff;
+    } 
+    .main-nav-mobile ul li a.active { 
+        background: var(--primary-color); 
+        color: #000000;
+        font-weight: bolder;
+    } 
+    .main-nav-mobile ul li a.active:hover { 
+        border-left: 0px solid var(--primary-color);
+        cursor:default;
+    } 
+    .main-nav-mobile ul li a { transition: .1s; }
     
     
     .box{

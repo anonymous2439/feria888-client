@@ -45,10 +45,13 @@
     .content div div a img{
         height: 30px;
         float: right;
+        transition: width .3s, height .3s, transform .3s;
     }
     .content div div a img:hover{
-        scale: 1.1;
+        transform: rotate(90deg);
         cursor: pointer;
+        scale: 1.1;
+        transition: .3s;
     }
     .header-modal{
         border: 0px solid yellow;

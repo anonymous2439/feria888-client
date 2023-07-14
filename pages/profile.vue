@@ -11,8 +11,8 @@
                     </label>
                 </a>
                 <a @click="cpassword_is_active = true" class="btn-input btn-input--change">Change Password</a>
-                <a href="javascript:;" @click="getOnlineAgents">Cash-In</a>
-                <a href="javascript:;">Cash-Out</a>
+                <a class="btn-input btn-input--cashin" href="javascript:;" @click="getOnlineAgents">Cash In</a>
+                <a class="btn-input btn-input--cashout" href="javascript:;">Cash Out</a>
             </div>
             <ul>
                 <li>
@@ -33,7 +33,7 @@
 
             <div v-if="show_agents" class="online-agents">
                 <h2>Available Agents:</h2>
-                <a href="javascript:;" @click="getOnlineAgents">Refresh</a>
+                <a class="btn-input btn-input--refresh" href="javascript:;" @click="getOnlineAgents">Refresh</a>
                 <ul>
                     <li v-for="(agent, i) in agents" :key="i">{{ agent.user.username }} - <a :href="agent.link" target="_blank">{{ agent.link || 'link not set' }} </a></li>
                 </ul>
@@ -186,6 +186,25 @@
         outline: 2px solid #ebb948;
     }
     
-    
+    @media only screen and (max-width: 800px) {
+        .profile-nav { 
+            display: flex; 
+            column-gap: 10px; 
+            text-decoration: none;
+        } 
+        .btn-input--cashout{
+            font-size: 15px;
+        }
+        .btn-input--change{
+            font-size: 12px;
+            font-weight: 400;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .btn-input--change{
+            font-size: 11px;
+            font-weight: 400;
+        }
+    }
     
 </style>

@@ -94,6 +94,7 @@ input:focus{
   color: #000000;
   border: 1px solid #c8371a;
   margin: 10px 10px 0px 0px;
+  line-height: 35px;
 }
 .btn-input--submit{
   background: #ebb948;
@@ -102,40 +103,49 @@ input:focus{
 }
 .btn-input--delete{
   background: #c8371a;
+  line-height: 35px;
   color: #fff;
+  line-height: 35px;
 }
 .btn-input--register{
   background: #c8371a;
   color: #fff;
   width: 200px;
+  line-height: 35px;
 }
 .btn-input--login{
   background: #ebb948;
   color: #fff;
   width: 200px;
+  line-height: 35px;
 }
 .btn-input--logout{
   background: #c8371a;
   color: #fff;
   line-height: 35px;
+  padding: 0px 8px;
 }
 .btn-input--load{
   background: #ebb948;
   color: #fff;
   width: 120px;
+  line-height: 35px;
 }
 .btn-input--search{
   background: #c8371a;
   color: #fff;
+  line-height: 35px;
 }
 .btn-input--add{
   background: #ebb948;
   color: #fff;
   margin-right: 10px;
+  line-height: 35px;
 }
 .btn-input--admin-login{
   width: 300px;
   background: #ebb948;
+  line-height: 35px;
   color: #fff;
   margin-top: 10px;
 }
@@ -148,6 +158,40 @@ input:focus{
   background: #c8371a;
   color: #fff;
   line-height: 35px;
+}
+.btn-input--cashin{
+  background: #ebb948;
+  color: #fff;
+  line-height: 35px;
+  padding: 0px 6px 0px 6px;
+}
+.btn-input--cashout{
+  background: #c8371a;
+  color: #fff;
+  line-height: 35px;
+  padding: 0px 6px 0px 6px;
+}
+.btn-input--linknotset{
+  background: #c8371a;
+  color: #fff;
+  line-height: 35px;
+  font-size: 15px;
+  width: 100px;
+  padding: 0px 8px;
+  margin-right: 8px;
+}
+.btn-input--agent-cancel{
+  color: #fff;
+  background: #c8371a;
+  line-height: 35px;
+  margin-right: 8px;
+}
+.btn-input--refresh{
+  color: #fff;
+  background: #ebb948;
+  padding: 0px 8px;
+  line-height: 35px;
+  margin-right: 8px;
 }
 
 /*Underline hover*/
@@ -276,37 +320,26 @@ input:focus{
 .datatable .dataTables_info{
   margin: 15px 0;
 }
-.datatable #DataTables_Table_9_paginate a{
+.datatable .dataTables_paginate .paginate_button.previous{
+  font-weight: bold;
   margin-right: 10px;
 }
-.datatable #DataTables_Table_9_paginate #DataTables_Table_9_previous{
-  font-weight: bold;
-  cursor: pointer;
-}
-.datatable #DataTables_Table_9_paginate #DataTables_Table_9_previous:hover{
+.datatable .dataTables_paginate .paginate_button.previous:hover{
   color: #c8371a;
-}
-.datatable #DataTables_Table_9_paginate #DataTables_Table_9_next{
-  font-weight: bold;
   cursor: pointer;
 }
-.datatable #DataTables_Table_9_paginate #DataTables_Table_9_next:hover{
+.datatable .dataTables_paginate .paginate_button.current{
+  margin-right: 10px;
+}
+.datatable .dataTables_paginate .paginate_button.next{
+  font-weight: bold;
+  margin-right: 10px;
+}
+.datatable .dataTables_paginate .paginate_button.next:hover{
   color: #c8371a;
-}
-.datatable .paginate_butto{
-  font-weight: bold;
-  margin-right: 7px;
-}
-.datatable .dataTables_paginate .paginate_button .current{
-  font-weight: 100 !important;
-  margin-right: 7px;
-  cursor: none !important;
-}
-.datatable .dataTables_paginate a:nth-child(3){
-  font-weight: bold;
-  margin-right: 7px;
   cursor: pointer;
-} 
+}
+
 
 /*For switch button*/
 .switch {

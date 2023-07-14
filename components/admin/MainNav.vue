@@ -211,6 +211,6 @@
         width: 120px; 
         height: auto;
         padding-bottom: 10px;
-        filter: drop-shadow(0 0 0.20rem #fff);   
+        filter: drop-shadow(0 0 0.20rem #fff);
     }
 </style>

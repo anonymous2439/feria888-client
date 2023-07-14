@@ -1,5 +1,5 @@
 <template>
-    <div class="login-modal">
+    <div id="login-modal" class="login-modal">
         <div class="login-modal-overlay modal-overlay" @click="() => {login_is_active = false}"></div>
         <div class="login-modal-con">
             

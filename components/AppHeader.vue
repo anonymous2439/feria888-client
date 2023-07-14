@@ -10,6 +10,7 @@
                     </div>           
                 </div>
                 <div class="main-nav-mobile" v-show="nav_is_active">
+                    <div class="overlay" @click="() => {nav_is_active = false}"></div>
                     <div class="main-nav-mobile-con">
                         <div class="nav-mobile-header">
                             <div class="nav-mobile-main-logo">
@@ -125,7 +126,7 @@
 
     .nav-mobile-header {border-bottom: 1px solid #ffffff56;padding-bottom: 10px;}
     .main-nav-mobile{z-index:1000;position: fixed;width: 100%;height: 100vh;top: 0;left: 0;transition: .6s;}
-    .main-nav-mobile::before{background-color: #00000051;position: absolute;top: 0;left: 0;width: 100%;height: 100%;content: "";}
+    .main-nav-mobile .overlay{background-color: #00000051;position: absolute;top: 0;left: 0;width: 100%;height: 100%;content: "";}
     .main-nav-mobile-con{position: absolute;background-color: #302e39;top: 0;right: 0;width: 200px;height: 100%;box-shadow: 0 0 18px -4px #000000;}
     .main-nav-mobile-con ul li {margin-bottom: 5px;}
     .nav-mobile-main-logo {float: left;width: 25%;padding: 10px 0 0 10px;}
@@ -189,7 +190,7 @@
         .main-nav { float: none; clear: both; } 
         .main-nav ul { display: none; } 
         .header-con{
-            filter: drop-shadow(0 0 0.20rem #000);
+            box-shadow: 0 0 5px 1px #00000050;
         }
     }
     @media only screen and (max-width: 600px) {

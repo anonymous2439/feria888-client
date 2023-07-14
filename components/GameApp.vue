@@ -12,7 +12,7 @@
                 </template>
                 <template v-else>
                     <div class="game-app-links">
-                        <a @click="playClick" class="btn-primary">Login <br />or <br /> Register</a>
+                        <a href="#login-modal" @click="login_is_active = true" class="btn-primary">Login <br />or <br /> Register</a>
                     </div>
                     <a class="link-mobile" @click="playClick"></a>
                 </template>
@@ -29,6 +29,7 @@
 <script setup>
 
     const user_info = useCookie('user_info')
+    const login_is_active = useState('login_is_active', () => false)
     const props = defineProps({
         icon: String,
         link: String,

@@ -1,14 +1,39 @@
 <template>
     <div class="footer-menu">
-            <ul>
-                <li><NuxtLink exact-active-class="active" to="/">HOME</NuxtLink></li>
-                <li><NuxtLink exact-active-class="active" to="/games">GAMES</NuxtLink></li>
-                <li><NuxtLink exact-active-class="active" to="/profile">PROFILE</NuxtLink></li>
-                <li><NuxtLink exact-active-class="active" to="">PANEL</NuxtLink></li>
-                <li><NuxtLink exact-active-class="active" to="">LOGOUT</NuxtLink></li>
-            </ul>
-        </div>
+        <ul>
+            <li><NuxtLink exact-active-class="active" to="/">HOME</NuxtLink></li>
+            <li><NuxtLink exact-active-class="active" to="/games">GAMES</NuxtLink></li>
+            <li><NuxtLink exact-active-class="active" to="/profile">PROFILE</NuxtLink></li>
+            <li><NuxtLink exact-active-class="active" to="">PANEL</NuxtLink></li>
+            <template v-if="user_info">
+                <li><NuxtLink exact-active-class="active" @click="logout">LOGOUT</NuxtLink></li>
+            </template>
+            <template v-else>
+                <li><NuxtLink exact-active-class="active" @click="login_is_active = true">LOGIN</NuxtLink></li>
+            </template>
+        </ul>
+        <ModalLogin v-show="login_is_active" />
+    </div>
 </template>
+
+<script setup>
+    const runTimeConfig = useRuntimeConfig()
+    const user_info_cookie = useCookie('user_info')
+    const user_info = user_info_cookie.value
+    const login_is_active = useState('login_is_active')
+
+    async function logout(){
+        const { data, refresh } = await useFetch(`${runTimeConfig.public.baseURL}/api/logout`, { 
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer '+user_info.token,
+            },
+        })
+        const user_info_cookie = useCookie('user_info')
+        user_info_cookie.value = null
+        window.location.replace('/')
+    }
+</script>
 
 <style scoped>
 .footer-menu { 

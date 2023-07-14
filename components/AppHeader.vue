@@ -9,9 +9,6 @@
                         <nuxt-link to="/"><img src="~/assets/images/main_logo.png" /></nuxt-link>
                     </div>           
                 </div>
-                <div class="banner-header">
-                    <span></span>
-                </div>
                 <div class="main-nav-mobile" v-show="nav_is_active">
                     <div class="main-nav-mobile-con">
                         <div class="nav-mobile-header">
@@ -32,8 +29,7 @@
                         <li>
                             <nuxt-link @click="() => {login_is_active = !login_is_active}" 
                                 class="flash-slide flash-slide--login">
-                                <img src="/images/user.png" id="img-login">
-                                Login</nuxt-link>
+                                <i class="fa fa-sign-in"></i> Login</nuxt-link>
                             <ModalLogin v-show="login_is_active" />
                         </li>
                         <li>
@@ -90,14 +86,7 @@
 </script>
 
 <style scoped>
-    .banner-header{
-        display: inline-block;
-        border: 1px solid white;
-        
-        height: 80px;
-        width: 270px;
-        margin-left: 10px;
-    }
+    
     #header{position: relative;}
     .header-con{
         position: relative;
@@ -137,7 +126,7 @@
     .nav-mobile-header {border-bottom: 1px solid #ffffff56;padding-bottom: 10px;}
     .main-nav-mobile{z-index:1000;position: fixed;width: 100%;height: 100vh;top: 0;left: 0;transition: .6s;}
     .main-nav-mobile::before{background-color: #00000051;position: absolute;top: 0;left: 0;width: 100%;height: 100%;content: "";}
-    .main-nav-mobile-con{position: absolute;background-color: #302e39;top: 0;right: 0;width: 200px;height: 100%;box-shadow: 0 0 18px -4px #e4b53679;}
+    .main-nav-mobile-con{position: absolute;background-color: #302e39;top: 0;right: 0;width: 200px;height: 100%;box-shadow: 0 0 18px -4px #000000;}
     .main-nav-mobile-con ul li {margin-bottom: 5px;}
     .nav-mobile-main-logo {float: left;width: 25%;padding: 10px 0 0 10px;}
 
@@ -193,28 +182,18 @@
    
     }
     @media only screen and (max-width: 1000px) {
-        .banner-header{
-            border: 1px solid blue;
-            min-width: 600px;            
-        }
+        
     }
     @media only screen and (max-width: 800px) {
         .hamburger-menu{display: block;}
         .main-nav { float: none; clear: both; } 
-        .main-nav ul { justify-content: center; } 
-        .banner-header{
-            border: 1px solid green;
-            
-            min-width: 270px;
+        .main-nav ul { display: none; } 
+        .header-con{
+            filter: drop-shadow(0 0 0.20rem #000);
         }
-        
     }
     @media only screen and (max-width: 600px) {
-        .banner-header{
-            content: url('/images/bannertry_300.png');
-            border: 1px solid pink;
-            max-width: 270px;
-        }
+        
     }
    
 </style>

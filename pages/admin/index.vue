@@ -14,7 +14,5 @@
 </script>
 
 <style scoped>
-    .dashboard-page{
-        
-    }
+    
 </style>

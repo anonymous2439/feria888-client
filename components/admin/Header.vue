@@ -7,7 +7,8 @@
             </ul>
         </div>
         <div class="header-nav">
-            <a @click="logout" class="btn-input btn-input--logout">Logout</a>
+            <a @click="logout" class="btn-input btn-input--logout">
+                <i class="fa fa-sign-out"></i> Logout</a>
         </div>
     </div>
 </template>
@@ -42,17 +43,38 @@
 
 <style scoped>
     
-    .header {background-color: #ebb948; color: #fff;width: 100%;position: relative;padding: 10px 0px 20px;}
+    .header {
+        background-color: #ebb948; 
+        color: #fff;
+        width: 100%;
+        position: relative;
+        padding: 10px 0px 20px;
+    }
     .header-info {
         display: inline-block; 
         vertical-align: top;
         font-size: 20px;
-        border: 0px solid white;
     }
     .header-nav {
         float: right;
-        border: 0px solid green;
     }
-    .header::before{content: "";width: 100%;background: inherit;position: absolute;top: 0;left: -100%;height: 100%;}
-    .header::after{content: "";width: 100%;background: inherit;position: absolute;top: 0;right: -100%;height: 100%;}
+    .header::before{
+        content: "";
+        width: 100%;
+        background: 
+        inherit;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        height: 100%;
+    }
+    .header::after{
+        content: "";
+        width: 100%;
+        background: inherit;
+        position: absolute;
+        top: 0;
+        right: -100%;
+        height: 100%;
+    }
 </style>

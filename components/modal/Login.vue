@@ -6,7 +6,8 @@
                 <form @submit.prevent="submitForm">
                     <input v-model="formData.username" placeholder="Username" type="text" />
                     <input v-model="formData.password" placeholder="Password" type="password" />
-                    <button @click="submitForm" class="btn-input btn-input--login">Login</button>                
+                    <button @click="submitForm" class="btn-input btn-input--login">
+                        <i class="fa fa-sign-in"></i> Login</button>                
                     <div v-if="is_loading" style="color:#1a1a1a">
                         <img src="~/assets/images/loader.gif" id="loader" />
                         <!-- <LoaderCardShuffle /> -->

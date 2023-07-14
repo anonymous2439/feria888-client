@@ -4,7 +4,7 @@
             <h2 class="page-title">Agent Panel</h2>
             <br /> 
             <div class="agent-nav">
-                <a @click="changeAgentStatus" href="javascript:;">{{ agent_info?.status }}</a>
+                <a class="btn-input btn-input--agent-cancel" @click="changeAgentStatus" href="javascript:;">{{ agent_info?.status }}</a>
             </div>
             <ul>
                 <li>
@@ -15,15 +15,16 @@
                     <span>{{ user_info?.user?.wallets?.[0]?.wallet_balance || 0 }}</span>
                 </li>
                 <li>
-                    <b>Link: </b>
+                    <b>Link : </b>
                     <template v-if="editting_link">
-                        <input :href="agent_info?.link || 'javascript:;'" target="_blank" :value="agent_info?.link || 'Link not set'"> -
-                        <a href="javascript:;" @click="editting_link = false">Cancel</a> | 
-                        <a href="javascript:;">Save</a>
+                        <input :href="agent_info?.link || 'javascript:;'" target="_blank" :value="agent_info?.link || 'Link not set'"><br />
+                        <a class="btn-input btn-input--agent-cancel" href="javascript:;" @click="editting_link = false">Cancel</a>
+                        <a class="btn-input btn-input--submit" href="javascript:;">Save</a>
                     </template>
                     <template v-else>
-                        <a :href="agent_info?.link || 'javascript:;'" target="_blank">{{ agent_info?.link || 'Link not set' }}</a> -
-                        <a href="javascript:;" @click="editting_link = true">Edit</a>
+                        <br />
+                        <a class="btn-input btn-input--linknotset" href="agent_info?.link || 'javascript:;'" target="_blank">{{ agent_info?.link || 'Link not set' }}</a>
+                        <a class="btn-input btn-input--edit" href="javascript:;" @click="editting_link = true">EDIT</a>
                     </template>
                 </li>                
             </ul>
@@ -32,15 +33,15 @@
                 <h2 class="page-title">Transfer</h2>
                 <form @submit.prevent="searchUser">
                     <input v-model="search.value" placeholder="ID / Username" />
-                    <button type="submit">Search</button>
+                    <button class="btn-input btn-input--search" type="submit">Search</button>
                 </form>
                 <div class="user-details">
-                    <p>ID: <input v-model="user_form.id" disabled /></p>
-                    <p>Username: <input :value=" user_search?.username || '' " disabled /></p>
-                    <p>Coin balance: <input :value="user_search?.coins?.[0]?.coin_balance || 0 " disabled /></p>
+                    <p><input v-model="user_form.id" disabled />: ID</p>
+                    <p><input :value=" user_search?.username || '' " disabled />: Username</p>
+                    <p><input :value="user_search?.coins?.[0]?.coin_balance || 0 " disabled />: Coin Balance</p>
                     <form @submit.prevent="loadCoins">
                         <input v-model="user_form.amount" placeholder="Amount" />
-                        <button>Load Coins</button>
+                        <button class="btn-input btn-input--load">Load Coins</button>
                     </form>
                     <p class="error-message">{{ error_message }}</p>
                 </div>
@@ -180,6 +181,10 @@
     }
 </script>
 <style scoped>
+    
+    input {
+        margin: 5px 8px;
+    }
     .profile-page {color: #000;}
 
     .agent-nav { display: flex; column-gap: 20px; text-decoration: none;} 

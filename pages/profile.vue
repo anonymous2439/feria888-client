@@ -42,6 +42,7 @@
             <!-- transactions -->
             <div class="transactions">
                 <h2>Transactions</h2>
+                
                 <table>
                     <thead>
                         <tr>

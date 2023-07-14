@@ -12,7 +12,7 @@
                         <th>Username</th>
                         <th>Email</th>
                         <th>Phone Number</th>
-                        <th>Coin Balance</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -20,12 +20,12 @@
                     <tr v-for="(user, i) in users" :key="i">
                         <td>{{ user.id }}</td>
                         <td>{{ user.username }}</td>
-                        <td>{{ user.email }}</td>
+                        <td><a :href="user.email" target="_blank">{{ user.email }}</a></td>
                         <td>{{ user.phone_number }}</td>
-                        <td>{{ user.coins.length > 0 ? user.coins[0].coin_balance : 0 }}</td>
+                        <td><span :class="'status status-'+user?.agent?.status">{{ user?.agent?.status }}</span></td>
                         <td>
                             (
-                            <a @click="onDetailsClick(user)">Details</a> <a v-if="user_info.user.user_type.name == 'admin'" @click="onDeleteClick(user)">Delete</a>
+                                <a href="javascript:;">Transactions</a> <a href="javascript:;1=" @click="onDetailsClick(user)">Details</a> <a v-if="user_info.user.user_type.name == 'admin'" href="javascript:;" @click="onDeleteClick(user)">Delete</a>
                             )
                         </td>
                     </tr>
@@ -125,7 +125,10 @@ const paginatedData = computed(() => {
 <style scoped>
     @import 'datatables.net-dt';
     
-    
+    .status {position: relative;display: block;}
+    .status::before { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; border-radius: 100%; } 
+    .status.status-online::before { background: green; } 
+    .status.status-offline::before { background: gray; } 
     .table-nav a img{
         cursor: pointer;
         height: 30px;
